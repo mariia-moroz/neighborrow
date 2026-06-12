@@ -8,4 +8,5 @@ interface Item {
   summary: string;
   image: string;
   available?: boolean;
+  borrow_duration: number;
 }

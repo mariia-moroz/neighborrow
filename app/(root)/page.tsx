@@ -4,8 +4,8 @@ import { sampleItems } from "@/constants";
 
 const Home = () => (
   <>
-    <ItemOverview {...sampleItems[0]}/>
-    <ItemList title='Latest Items' items={sampleItems} containerClassname='mt-28' />
+    <ItemOverview {...sampleItems[0]} />
+    <ItemList title='Latest Items' items={sampleItems} containerClassName='mt-15' />
   </>
 );
 

@@ -21,7 +21,7 @@ export const sampleItems = [
       "Drill bit starter set",
     ],
     brand: "Bosch Cordless Combi Drill EasyImpact 18V-40",
-    borrow_duration: "3",
+    borrow_duration: 3,
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ export const sampleItems = [
     condition: "Excellent",
     included: ["Bike lock", "Front light", "Rear light"],
     brand: "Fagero Single-Speed Bike",
-    borrow_duration: "7",
+    borrow_duration: 7,
   },
   {
     id: 3,
@@ -57,7 +57,7 @@ export const sampleItems = [
     condition: "Good",
     included: ["Tent", "Tent poles", "Ground pegs", "Carry bag"],
     brand: "Quechua 4-Person Tent",
-    borrow_duration: "14",
+    borrow_duration: 14,
   },
   {
     id: 4,
@@ -75,7 +75,7 @@ export const sampleItems = [
     condition: "Excellent",
     included: ["Pet carrier", "Removable padded mat"],
     brand: "Portable Soft-Sided Pet Carrier",
-    borrow_duration: "14",
+    borrow_duration: 14,
   },
   {
     id: 5,
@@ -93,7 +93,7 @@ export const sampleItems = [
     condition: "Excellent",
     included: ["Vacuum", "Charging dock", "Crevice tool", "Brush attachment"],
     brand: "Dyson V8 Animal",
-    borrow_duration: "2",
+    borrow_duration: 2,
   },
   {
     id: 6,
@@ -111,7 +111,7 @@ export const sampleItems = [
     condition: "Good",
     included: ["Grooming scissors", "Comb", "Cleaning cloth", "Storage pouch"],
     brand: "Professional Pet Grooming Set",
-    borrow_duration: "2",
+    borrow_duration: 2,
   },
   {
     id: 7,
@@ -129,7 +129,7 @@ export const sampleItems = [
     condition: "Excellent",
     included: ["Projector", "Power cable", "Remote control", "HDMI cable"],
     brand: "Valerion Home Cinema Projector",
-    borrow_duration: "4",
+    borrow_duration: 4,
   },
   {
     id: 8,
@@ -147,7 +147,7 @@ export const sampleItems = [
     condition: "Good",
     included: ["Step ladder"],
     brand: "Krause Aluminium Step Ladder",
-    borrow_duration: "2",
+    borrow_duration: 2,
   },
   {
     id: 9,
@@ -165,7 +165,7 @@ export const sampleItems = [
     condition: "Good",
     included: ["Mixed LEGO pieces", "Storage box"],
     brand: "LEGO Classic Collection",
-    borrow_duration: "14",
+    borrow_duration: 14,
   },
   {
     id: 10,
@@ -183,7 +183,7 @@ export const sampleItems = [
     condition: "Excellent",
     included: ["Picnic blanket", "Carrying straps"],
     brand: "Outdoor Roll-Up Picnic Blanket",
-    borrow_duration: "2",
+    borrow_duration: 2,
   },
   {
     id: 11,
@@ -201,7 +201,7 @@ export const sampleItems = [
     condition: "Excellent",
     included: ["Instant camera", "Carrying strap"],
     brand: "Polaroid Now+",
-    borrow_duration: "3",
+    borrow_duration: 3,
   },
   {
     id: 12,
@@ -219,7 +219,7 @@ export const sampleItems = [
     condition: "Excellent",
     included: ["Sewing machine", "Power cable", "Starter thread kit"],
     brand: "Brother Sewing Machine",
-    borrow_duration: "5",
+    borrow_duration: 5,
   },
   {
     id: 13,
@@ -237,7 +237,7 @@ export const sampleItems = [
     condition: "Excellent",
     included: ["Net", "3 balls", "Carry bag"],
     brand: "Spikeball Pro",
-    borrow_duration: "2",
+    borrow_duration: 2,
   },
   {
     id: 14,
@@ -255,7 +255,7 @@ export const sampleItems = [
     condition: "Good",
     included: ["Woody action figure"],
     brand: "Disney Pixar Toy Story",
-    borrow_duration: "14",
+    borrow_duration: 14,
   },
   {
     id: 15,
@@ -273,11 +273,11 @@ export const sampleItems = [
     condition: "Excellent",
     included: ["UNO deck", "Game instructions"],
     brand: "Mattel UNO",
-    borrow_duration: "3",
+    borrow_duration: 3,
   },
   {
     id: 16,
-    title: "Professional Waffle Maker",
+    title: "Professional Waffle Maker super puper",
     category: "kitchen",
     rating: 4.8,
     total_items: 2,
@@ -291,6 +291,6 @@ export const sampleItems = [
     condition: "Excellent",
     included: ["Waffle maker", "User guide"],
     brand: "Cooks Professional Waffle Maker",
-    borrow_duration: "2",
+    borrow_duration: 2,
   },
 ];

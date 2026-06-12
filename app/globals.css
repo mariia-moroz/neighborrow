@@ -127,16 +127,49 @@
 
 @layer components {
   .item-rating {
-    @apply flex flex-row gap-1;
+    @apply flex flex-row gap-2;
+  }
+
+  .tag {
+    @apply px-3 py-0.5 border border-foreground rounded-md font-semibold text-base bg-tag-accent truncate;
+  }
+
+  .item-button {
+    @apply px-3 py-0.5 border border-foreground rounded-md font-semibold text-base bg-primary;
   }
 
   /* Item List */
+
   .item-list {
-    @apply mt-10 flex flex-wrap gap-5 max-xs:justify-between xs:gap-10;
+    @apply mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 xs:gap-10!;
   }
 
-  .item-list h2 {
+  .item-list-header {
     @apply font-bold text-3xl;
+  }
+
+  .item-card {
+    @apply flex flex-col gap-5 bg-card p-5 border border-border rounded-xl;
+  }
+
+  .item-card-image {
+    @apply flex flex-1 border border-secondary rounded-lg overflow-hidden aspect-square;
+  }
+
+  .item-card-title {
+    @apply font-bold text-xl mb-2.5 truncate;
+  }
+
+  .item-card-details {
+    @apply flex flex-col gap-1.5 font-medium;
+  }
+
+  .item-card-controls {
+    @apply flex items-center justify-between gap-3;
+  }
+
+  .item-card-link {
+    @apply flex items-center justify-between;
   }
 
   /* Item Overview */
@@ -144,7 +177,7 @@
     @apply flex flex-col-reverse items-center gap-12 xl:flex-row xl:items-start xl:gap-20;
   }
   .item-overview h1 {
-    @apply text-5xl font-bold xl:text-7xl!;
+    @apply text-5xl font-bold md:text-6xl desktop:text-7xl;
   }
 
   .item-info {
@@ -161,10 +194,6 @@
 
   .item-details p {
     @apply text-xl font-medium;
-  }
-
-  .item-details .tag {
-    @apply ml-2 px-2.5 py-0.5 border border-foreground rounded-lg font-semibold text-base bg-tag-accent;
   }
 
   .item-copies {
@@ -184,6 +213,6 @@
   }
 
   .item-overview_btn {
-    @apply mt-4 px-4! min-h-13 w-fit bg-special-accent! hover:bg-special-accent/90! text-foreground max-md:w-full! cursor-pointer border! border-foreground!;
+    @apply mt-4 px-5! min-h-13 w-fit bg-special-accent! hover:bg-special-accent/90! text-foreground max-md:w-full! cursor-pointer border! border-foreground!;
   }
 }

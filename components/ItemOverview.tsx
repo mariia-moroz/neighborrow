@@ -2,13 +2,21 @@ import Image from "next/image";
 import { Rating } from "@/components/reui/rating";
 import { Button } from "./ui/button";
 
-const ItemOverview = ({ title, category, rating, total_items, available_items, summary, image }: Item) => {
+const ItemOverview = ({
+  title,
+  category,
+  rating,
+  total_items,
+  available_items,
+  summary,
+  image = "/images/item-placeholder.png",
+}: Item) => {
   return (
     <section className='item-overview'>
       <div className='flex flex-2 flex-col gap-5'>
         <h1>{title}</h1>
         <div className='item-details'>
-          <p>
+          <p className='flex gap-2'>
             Category:<span className='tag'>{category}</span>
           </p>
           <div className='item-rating'>
@@ -35,7 +43,7 @@ const ItemOverview = ({ title, category, rating, total_items, available_items, s
       </div>
 
       <div className='item-image'>
-        <Image src={image} alt={title} width={400} height={400} className="w-full bg-cover"/>
+        <Image src={image} alt={title} width={400} height={400} loading='eager' className='w-full bg-cover' />
       </div>
     </section>
   );
