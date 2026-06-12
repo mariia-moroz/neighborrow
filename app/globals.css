@@ -38,6 +38,9 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --breakpoint-xs: 480px;
+  --breakpoint-desktop: 1600px;
+  --container-desktop: 1600px;
 }
 
 :root {
@@ -77,7 +80,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
   }
   html {
     @apply font-sans;
@@ -100,5 +103,116 @@
 
   .hide-scrollbar::-webkit-scrollbar-thumb:hover {
     background: transparent;
+  }
+
+  @media (max-width: 359px) {
+    .root-container {
+      width: 360px;
+      transform: scale(calc(100vw / 360));
+      transform-origin: top left;
+    }
+  }
+}
+
+@layer utilities {
+  /* Root */
+  .root-container {
+    @apply min-h-screen flex flex-1 flex-col mx-auto max-w-desktop justify-between;
+  }
+
+  .content-container {
+    @apply flex flex-col px-5 xs:px-10 md:px-16;
+  }
+}
+
+@layer components {
+  .item-rating {
+    @apply flex flex-row gap-2;
+  }
+
+  .tag {
+    @apply px-3 py-0.5 border border-foreground rounded-md font-semibold text-base bg-tag-accent truncate;
+  }
+
+  .item-button {
+    @apply px-3 py-0.5 border border-foreground rounded-md font-semibold text-base bg-primary;
+  }
+
+  /* Item List */
+
+  .item-list {
+    @apply mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 xs:gap-10!;
+  }
+
+  .item-list-header {
+    @apply font-bold text-3xl;
+  }
+
+  .item-card {
+    @apply flex flex-col gap-5 bg-card p-5 border border-border rounded-xl;
+  }
+
+  .item-card-image {
+    @apply flex flex-1 border border-secondary rounded-lg overflow-hidden aspect-square;
+  }
+
+  .item-card-title {
+    @apply font-bold text-xl mb-2.5 truncate;
+  }
+
+  .item-card-details {
+    @apply flex flex-col gap-1.5 font-medium;
+  }
+
+  .item-card-controls {
+    @apply flex items-center justify-between gap-3;
+  }
+
+  .item-card-link {
+    @apply flex items-center justify-between;
+  }
+
+  /* Item Overview */
+  .item-overview {
+    @apply flex flex-col-reverse items-center gap-12 xl:flex-row xl:items-start xl:gap-20;
+  }
+  .item-overview h1 {
+    @apply text-5xl font-bold md:text-6xl desktop:text-7xl;
+  }
+
+  .item-info {
+    @apply flex flex-2 flex-col gap-5;
+  }
+
+  .item-image {
+    @apply flex flex-1 border-10 border-secondary rounded-4xl overflow-hidden aspect-square max-w-full;
+  }
+
+  .item-details {
+    @apply mt-3 flex flex-row flex-wrap gap-4 text-xl font-medium;
+  }
+
+  .item-details p {
+    @apply text-xl font-medium;
+  }
+
+  .item-copies {
+    @apply flex flex-row flex-wrap gap-4;
+  }
+
+  .item-copies p {
+    @apply text-xl font-medium!;
+  }
+
+  .item-copies p span {
+    @apply ml-2 font-bold text-secondary;
+  }
+
+  .item-description {
+    @apply mt-2 text-justify text-xl;
+  }
+
+  .item-overview_btn {
+    @apply mt-4 px-5! min-h-13 w-fit bg-special-accent! hover:bg-special-accent/90! text-foreground max-md:w-full! cursor-pointer border! border-foreground!;
   }
 }

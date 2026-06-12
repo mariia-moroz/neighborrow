@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang='en' className={`${nunitoSans.variable} antialiased`}>
-      <body className='min-h-full flex flex-col'>{children}</body>
+      <body >{children}</body>
     </html>
   );
 };
