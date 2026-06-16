@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@source "../app";
+@source "../components";
+@source "../constants";
+@source "../lib";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
@@ -44,7 +48,7 @@
 }
 
 :root {
-  --background: #f8f9f6;
+  --background: #fafaf8;
   --foreground: #3c3b3e;
   --card: #ffffff;
   --card-foreground: #3c3b3e;
@@ -59,11 +63,11 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --special-accent: #fbe26d;
-  --tag-accent: #eeeff1;
+  --tag-accent: #ad74f9;
   --pending-icon: #cbd5e1;
   --success-icon: #9dde8b;
   --destructive: #c44da2;
-  --border: #cbd5e1;
+  --border: #e0daee;
   --input: #ffffff;
   --input-border: #3c3b3e;
   --ring: #c99fff;
@@ -72,7 +76,7 @@
   --sidebar-foreground: #3c3b3e;
   --sidebar-primary: #d9bbff;
   --sidebar-primary-foreground: #3c3b3e;
-  --sidebar-border: #cbd5e1;
+  --sidebar-border: #d5dee9;
 }
 
 @layer base {
@@ -90,6 +94,11 @@
     width: 0px;
     height: 0px;
     border-radius: 0px;
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .hide-scrollbar::-webkit-scrollbar-track {
@@ -131,17 +140,91 @@
   }
 
   .tag {
-    @apply px-3 py-0.5 border border-foreground rounded-md font-semibold text-base bg-tag-accent truncate;
+    @apply px-3 py-0.5 border border-tag-accent rounded-md font-semibold text-base text-tag-accent bg-secondary/5 truncate;
   }
 
   .item-button {
-    @apply px-3 py-0.5 border border-foreground rounded-md font-semibold text-base bg-primary;
+    @apply px-3 py-0.5 border border-foreground rounded-md font-semibold text-base bg-primary text-nowrap;
+  }
+
+  .main-button {
+    @apply py-3! px-4! min-h-12! border border-foreground! rounded-md font-medium! text-base! bg-primary cursor-pointer;
+  }
+
+  /* Auth */
+  .auth-main {
+    @apply h-screen;
+  }
+
+  .auth-container {
+    @apply flex min-h-0 flex-1 flex-col justify-between sm:flex-row max-w-desktop mx-auto w-full sm:overflow-y-auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .auth-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .auth-bar {
+    @apply h-5 shrink-0 lg:h-6.5 bg-foreground;
+  }
+
+  .auth-form {
+    @apply my-auto flex h-full flex-1 items-center px-5 py-10;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .auth-form::-webkit-scrollbar {
+    display: none;
+  }
+
+  .auth-box {
+    @apply bg-card mx-auto my-auto flex max-w-xl flex-col gap-6 rounded-xl p-10 border border-border;
+  }
+
+  .auth-illustration {
+    @apply hidden sm:flex flex-1 flex-col self-stretch sticky w-full sm:top-0 sm:h-full;
+  }
+
+  @media (min-width: 640px) and (max-height: 930px) {
+    .auth-main {
+      height: auto;
+      min-height: 100vh;
+    }
+
+    .auth-container {
+      overflow-y: visible;
+    }
+
+    .auth-illustration {
+      position: static;
+      height: auto;
+      min-height: 930px;
+    }
+
+    .auth-illustration > div {
+      height: auto;
+      min-height: 930px;
+    }
+  }
+
+  .auth-illustration--mobile {
+    @apply sm:hidden flex w-full justify-center;
+  }
+
+  /* Form */
+  .form-label {
+    @apply font-medium! text-base!;
+  }
+  .form-input {
+    @apply border border-primary-foreground! min-h-12! py-3! px-4! rounded-md! text-base! font-medium! focus-visible:border-secondary! aria-invalid:border-destructive!;
   }
 
   /* Item List */
-
   .item-list {
-    @apply mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 xs:gap-10!;
+    @apply mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 xs:gap-9!;
   }
 
   .item-list-header {
@@ -150,6 +233,7 @@
 
   .item-card {
     @apply flex flex-col gap-5 bg-card p-5 border border-border rounded-xl;
+    box-shadow: 0 2px 8px rgba(201, 159, 255, 0.05);
   }
 
   .item-card-image {

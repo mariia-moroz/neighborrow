@@ -11,15 +11,15 @@ const Header = () => {
   return (
     <header className='my-10 flex justify-between gap-5'>
       <Link href='/' className="cursor-pointer">
-        <Image src='/images/logo.svg' alt='logo' width={211} height={32}/>
+        <Image src='/images/logo.svg' alt='logo' loading='eager' width={211} height={32}/>
       </Link>
       <ul className='flex flex-row items-center gap-8'>
         <li>
           <Link
             href='/collection'
             className={cn(
-              "cursor-pointer capitalize",
-              pathName === "/collection" ? "text-secondary font-bold" : "font-medium",
+              "cursor-pointer capitalize text-xl",
+              pathName === "/collection" ? "text-tag-accent font-bold" : "font-semibold",
             )}
           >
             Collection
