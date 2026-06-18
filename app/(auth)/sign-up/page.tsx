@@ -8,7 +8,7 @@ const SignUp = () => {
     <AuthForm
       type='SIGN_UP'
       formSchema={signUpSchema}
-      defaultValues={{ fullName: "", email: "", address: "", IdConfirmation: "", password: "" }}
+      defaultValues={{ fullName: "", email: "", address: "", password: "", IdConfirmation: "", }}
       onSubmit={async () => ({ success: true })}
     />
   );

@@ -5,10 +5,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: ""
-      }
-    ]
-  }
+        hostname: "ik.imagekit.io",
+        port: "",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

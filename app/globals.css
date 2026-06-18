@@ -42,6 +42,7 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --breakpoint-xxs: 400px;
   --breakpoint-xs: 480px;
   --breakpoint-desktop: 1600px;
   --container-desktop: 1600px;
@@ -157,7 +158,7 @@
   }
 
   .auth-container {
-    @apply flex min-h-0 flex-1 flex-col justify-between sm:flex-row max-w-desktop mx-auto w-full sm:overflow-y-auto;
+    @apply flex flex-1 flex-col justify-between sm:flex-row max-w-desktop mx-auto w-full sm:overflow-y-auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -181,7 +182,7 @@
   }
 
   .auth-box {
-    @apply bg-card mx-auto my-auto flex max-w-xl flex-col gap-6 rounded-xl p-10 border border-border;
+    @apply bg-card mx-auto my-auto flex max-w-xl flex-col gap-6 xs:gap-8 rounded-xl py-10 px-7 sm:p-10 border border-border;
   }
 
   .auth-illustration {
@@ -220,6 +221,19 @@
   }
   .form-input {
     @apply border border-primary-foreground! min-h-12! py-3! px-4! rounded-md! text-base! font-medium! focus-visible:border-secondary! aria-invalid:border-destructive!;
+  }
+
+  /* File Upload */
+  .upload-btn {
+    @apply flex min-h-12 w-full items-center! justify-center! gap-1.5 rounded-md! border border-foreground cursor-pointer! py-3! px-4!;
+  }
+
+  .upload-filename {
+    @apply mt-1 text-center text-xs truncate! max-w-40! lg:max-w-60!;
+  }
+
+  .progress {
+    @apply rounded-full bg-secondary p-0.5 text-center text-[8px] font-bold leading-none;
   }
 
   /* Item List */

@@ -31,8 +31,8 @@ const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSu
   };
 
   return (
-    <div className='flex flex-col gap-8'>
-      <h1 className='text-3xl font-bold'>
+    <div className='flex flex-col gap-6 xs:gap-8'>
+      <h1 className='text-2xl! xxs:text-3xl! font-bold'>
         {isSignIn ? "Welcome Back to NeighBorrow!" : "Create Your Account"}
       </h1>
       <p className='text-lg'>
@@ -78,7 +78,7 @@ const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSu
       </Button>
       <p className='text-center font-medium'>
         {isSignIn ? "Don't have an account yet? " : "Have an account already? "}
-        <Link href={isSignIn ? "/sign-up" : "/sign-in"} className='text-secondary font-bold'>
+        <Link href={isSignIn ? "/sign-up" : "/sign-in"} prefetch={false} className='text-secondary font-bold'>
           {isSignIn ? "Register here" : "Login"}
         </Link>
       </p>

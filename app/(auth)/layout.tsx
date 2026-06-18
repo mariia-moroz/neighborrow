@@ -20,7 +20,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
         <section className='auth-form'>
           <div className='auth-box'>
-            <Image src='/images/logo.svg' alt='logo' loading='eager' width={211} height={32} />
+            <Image src='/images/logo-full.svg' alt='logo' loading='eager' width={211} height={32} />
             <div>{children}</div>
           </div>
         </section>
