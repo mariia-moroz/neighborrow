@@ -1,12 +1,19 @@
+import { auth } from "@/auth";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = async ({ children }: { children: ReactNode }) => {
+  const session = await auth();
+
+  if (session) {
+    redirect("/");
+  }
+
   return (
     <main className='auth-main flex h-screen flex-col'>
       <div className='auth-bar' />
       <div className='auth-container'>
-
         <section className='auth-illustration--mobile'>
           <Image
             src='/images/claw.svg'
@@ -25,7 +32,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
           </div>
         </section>
 
-       <section className='auth-illustration--mobile'>
+        <section className='auth-illustration--mobile'>
           <Image
             src='/images/cutie-main.svg'
             alt='claw'

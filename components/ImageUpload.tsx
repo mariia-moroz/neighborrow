@@ -44,9 +44,11 @@ interface Props {
   placeholder?: string;
   folder?: string;
   variant?: "dark" | "light";
-  onFileChange?: (filePath: string) => void;
+  onFileChange?: (fileUrl: string) => void;
   value?: string;
 }
+
+type UploadedFile = Pick<UploadResponse, "filePath" | "url">;
 
 const FileUpload = ({
   type = "image",
@@ -57,11 +59,13 @@ const FileUpload = ({
   value,
 }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [file, setFile] = useState<Pick<UploadResponse, "filePath"> | null>(
-    value ? { filePath: value } : null,
-  );
+
+  const [file, setFile] = useState<UploadedFile | null>(value ? { filePath: value, url: value } : null);
   const [progress, setProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
+
+  const fileSrc = file?.url ?? file?.filePath ?? "";
+  const fileLabel = file?.filePath ?? file?.url ?? "";
 
   const onError = (error: any) => {
     console.log(error);
@@ -71,11 +75,13 @@ const FileUpload = ({
     });
   };
 
-  const onSuccess = (res: any) => {
-    setFile(res);
-    onFileChange?.(res.filePath);
+  const onSuccess = (res: UploadResponse) => {
+    const fileUrl = res.url ?? (res.filePath ? `${urlEndpoint}${res.filePath}` : "");
 
-    toast.success(`${res.filePath} uploaded successfully!`);
+    setFile(res);
+    onFileChange?.(fileUrl);
+
+    toast.success(`${res.filePath ?? res.url} uploaded successfully!`);
   };
 
   const onValidate = (file: File) => {
@@ -151,7 +157,7 @@ const FileUpload = ({
       >
         <PaperclipIcon size={18} height={18} width={18} />
         <p className='text-medium text-nowrap'>{placeholder}</p>
-        {file && <p className='upload-filename'>{file.filePath}</p>}
+        {file && <p className='upload-filename'>{fileLabel}</p>}
       </button>
 
       {progress > 0 && progress !== 100 && (
@@ -166,8 +172,8 @@ const FileUpload = ({
         (type === "image" ? (
           <div className='overflow-hidden rounded-md! border border-border'>
             <ImageKitImage
-              alt={file.filePath ?? ""}
-              src={file.filePath ?? ""}
+              alt={fileLabel}
+              src={fileSrc}
               width={500}
               height={300}
               className='block h-full w-full translate-y-[-1px] scale-[1.01] border-0! object-cover outline-none!'
@@ -175,7 +181,7 @@ const FileUpload = ({
           </div>
         ) : type === "video" ? (
           <ImageKitVideo
-            src={file.filePath ?? ""}
+            src={fileSrc}
             controls={true}
             className='h-96 w-full rounded-md! border border-border'
           />

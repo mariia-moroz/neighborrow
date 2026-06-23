@@ -1,15 +1,17 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { object, z, ZodType } from "zod";
+import { z, ZodType } from "zod";
 import { Controller, DefaultValues, FieldValues, Path, useForm } from "react-hook-form";
 
-import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { useRouter } from "next/navigation";
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { toast } from "sonner";
 import { FIELD_NAMES, FIELD_PLACEHOLDERS, FIELD_TYPES } from "@/constants";
 import ImageUpload from "./ImageUpload";
+import Link from "next/link";
 
 interface Props<T extends FieldValues> {
   type: "SIGN_IN" | "SIGN_UP";
@@ -19,15 +21,27 @@ interface Props<T extends FieldValues> {
 }
 
 const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSubmit }: Props<T>) => {
+  const router = useRouter();
   const isSignIn = type === "SIGN_IN";
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues as DefaultValues<T>,
   });
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
-    // Do something with the form values.
-    console.log(data);
+    const result = await onSubmit(data);
+
+    if (result.success) {
+      toast.success("Success", {
+        description: isSignIn ? "You have successfully signed in!" : "You have successfully signed up!",
+      });
+      router.push("/");
+    } else {
+      toast.error(`Error ${isSignIn ? "signing in" : "signing up"}`, {
+        description: result.error ?? "An error occured",
+      });
+    }
   };
 
   return (
@@ -52,8 +66,8 @@ const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSu
                   <FieldLabel htmlFor='auth-form-username' className='form-label'>
                     {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
                   </FieldLabel>
-                  {field.name === "IdConfirmation" ? (
-                    <ImageUpload />
+                  {field.name === "idConfirmation" ? (
+                    <ImageUpload value={field.value} onFileChange={field.onChange} />
                   ) : (
                     <Input
                       {...field}

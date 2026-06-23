@@ -3,7 +3,7 @@ export const FIELD_NAMES = {
   email: "Email",
   address: "Address",
   password: "Password",
-  IdConfirmation: "Upload your ID (file upload)",
+  idConfirmation: "Upload your ID (file upload)",
 };
 
 export const FIELD_TYPES = {
@@ -18,7 +18,7 @@ export const FIELD_PLACEHOLDERS = {
   email: "Your email address",
   address: "Full address and postcode",
   password: "At least 8 characters",
-  IdConfirmation: "Upload your ID (file upload)",
+  idConfirmation: "Upload your ID (file upload)",
 };
 
 export const sampleItems = [
