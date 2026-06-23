@@ -4,9 +4,7 @@ import { cn, getInitials } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Session } from "next-auth";
-import { UserRoundIcon } from "lucide-react";
 
 const Header = ({ session }: { session: Session | null }) => {
   const pathName = usePathname();
@@ -20,7 +18,6 @@ const Header = ({ session }: { session: Session | null }) => {
         <li>
           <Link
             href='/'
-            prefetch={false}
             className={cn(
               "cursor-pointer capitalize text-xl",
               pathName === "/" ? "text-tag-accent font-semibold" : "font-medium",
@@ -32,7 +29,6 @@ const Header = ({ session }: { session: Session | null }) => {
         <li>
           <Link
             href='/collection'
-            prefetch={false}
             className={cn(
               "cursor-pointer capitalize text-xl",
               pathName === "/collection" ? "text-tag-accent font-semibold" : "font-medium",
@@ -44,18 +40,15 @@ const Header = ({ session }: { session: Session | null }) => {
         <li>
           <Link
             href='/my-profile'
-            prefetch={false}
             className={cn(
               "cursor-pointer capitalize text-xl flex align-center items-center gap-2",
               pathName === "/my-profile" ? "text-tag-accent font-semibold" : "font-medium",
             )}
           >
-            Profile
-            <Avatar className='border border-secondary bg-primary/30'>
-              <AvatarFallback className='text-secondary font-bold'>
-                {session?.user?.name ? getInitials(session?.user?.name || "") : <UserRoundIcon />}
-              </AvatarFallback>
-            </Avatar>
+            <Image src='/icons/profile-icon.svg' alt='profile' loading='eager' width={32} height={32} />
+            <p>
+              Profile
+            </p>
           </Link>
         </li>
       </ul>
