@@ -9,9 +9,11 @@ import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { FIELD_NAMES, FIELD_PLACEHOLDERS, FIELD_TYPES } from "@/constants";
 import ImageUpload from "./ImageUpload";
 import Link from "next/link";
+import { useState } from "react";
+import { FIELD_NAMES, FIELD_PLACEHOLDERS, FIELD_TYPES } from "@/constants";
+import { Spinner } from "./ui/spinner";
 
 interface Props<T extends FieldValues> {
   type: "SIGN_IN" | "SIGN_UP";
@@ -23,6 +25,7 @@ interface Props<T extends FieldValues> {
 const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSubmit }: Props<T>) => {
   const router = useRouter();
   const isSignIn = type === "SIGN_IN";
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -30,6 +33,7 @@ const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSu
   });
 
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
+    setIsLoading(true);
     const result = await onSubmit(data);
 
     if (result.success) {
@@ -42,6 +46,7 @@ const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSu
         description: result.error ?? "An error occured",
       });
     }
+    setIsLoading(false);
   };
 
   return (
@@ -87,8 +92,9 @@ const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSu
           ))}
         </FieldGroup>
       </form>
-      <Button type='submit' form='auth-form' className='main-button'>
+      <Button type='submit' form='auth-form' className='main-button' disabled={isLoading}>
         {isSignIn ? "Sing In" : "Sign Up"}
+        {isLoading && <Spinner data-icon='inline-start' />}
       </Button>
       <p className='text-center font-medium'>
         {isSignIn ? "Don't have an account yet? " : "Have an account already? "}

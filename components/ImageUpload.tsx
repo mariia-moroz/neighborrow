@@ -33,8 +33,10 @@ const authenticator = async () => {
     const { signature, expire, token } = data;
 
     return { token, expire, signature };
-  } catch (error: any) {
-    throw new Error(`Authentication request failed: ${error.message}`);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+
+    throw new Error(`Authentication request failed: ${message}`);
   }
 };
 
@@ -67,8 +69,8 @@ const FileUpload = ({
   const fileSrc = file?.url ?? file?.filePath ?? "";
   const fileLabel = file?.filePath ?? file?.url ?? "";
 
-  const onError = (error: any) => {
-    console.log(error);
+  const onError = (error: unknown) => {
+    console.error(error);
 
     toast.error("Upload Failed", {
       description: `Your ${type} could not be uploaded. Please try again.`,

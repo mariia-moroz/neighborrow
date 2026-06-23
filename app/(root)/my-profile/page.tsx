@@ -1,8 +1,7 @@
 import ItemList from "@/components/ItemList";
 import { Button } from "@/components/ui/button";
 import { sampleItems } from "@/constants";
-import { auth, signOut } from "@/auth";
-import { redirect } from "next/navigation";
+import { signOut } from "@/auth";
 
 const Page = async () => {
   return (

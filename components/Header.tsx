@@ -1,12 +1,11 @@
 "use client";
 
-import { cn, getInitials } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Session } from "next-auth";
 
-const Header = ({ session }: { session: Session | null }) => {
+const Header = () => {
   const pathName = usePathname();
 
   return (
