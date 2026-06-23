@@ -10,3 +10,11 @@ interface Item {
   available?: boolean;
   borrow_duration: number;
 }
+
+interface AuthCredentials {
+  fullName: string;
+  email: string;
+  password: string;
+  address: string;
+  idConfirmation: string;
+}
