@@ -9,6 +9,7 @@ type UserState = "non-active" | "active";
 type InitialData = {
   email: string;
   fullName: string;
+  userId: string;
 };
 
 type EmailTemplateParams = {
@@ -153,14 +154,14 @@ const getUserState = async (email: string): Promise<UserState> => {
 };
 
 export const { POST } = serve<InitialData>(async context => {
-  const { email, fullName } = context.requestPayload;
+  const { email, fullName, userId } = context.requestPayload;
 
   // welcome email
   await context.run("new-signup", async () => {
     await sendEmail({
       email,
       subject: "Welcome to NeighBorrow, the place where you can borrow anything you want!",
-      deduplicationId: `onboarding-welcome-${email}`,
+      deduplicationId: `onboarding-welcome-${userId}`,
       message: createEmailTemplate({
         heading: "Welcome to NeighBorrow, the place where you can borrow anything you want!",
         fullName,
