@@ -68,6 +68,7 @@ const FileUpload = ({
 
   const fileSrc = file?.url ?? file?.filePath ?? "";
   const fileLabel = file?.filePath ?? file?.url ?? "";
+  const uploadProgress = Math.max(progress, isUploading ? 8 : 0);
 
   const onError = (error: unknown) => {
     console.error(error);
@@ -162,10 +163,17 @@ const FileUpload = ({
         {file && <p className='upload-filename'>{fileLabel}</p>}
       </button>
 
-      {progress > 0 && progress !== 100 && (
-        <div className='w-full rounded-full bg-primary'>
-          <div className='progress' style={{ width: `${progress}%` }}>
-            {progress}%
+      {isUploading && (
+        <div
+          className='mt-2 h-4 w-full overflow-hidden rounded-full border border-primary-foreground bg-primary'
+          role='progressbar'
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={progress}
+          aria-label={`${placeholder} upload progress`}
+        >
+          <div className='progress h-full transition-all duration-300' style={{ width: `${uploadProgress}%` }}>
+            {progress > 0 ? `${progress}%` : "Uploading..."}
           </div>
         </div>
       )}
