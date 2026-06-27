@@ -87,7 +87,7 @@ const createEmailTemplate = ({
                     height="32"
                     alt="logo"
                     class="email-brand-icon"
-                    style="display:inline-block;width:31px;height:32px;border:0;outline:none;text-decoration:none;margin:0 14px 0 0;vertical-align:middle;"
+                    style="display:inline-block;width:31px;height:32px;border:0;outline:none;text-decoration:none;margin:0 10px 0 0;vertical-align:middle;"
                   />
                   <p class="email-brand-text" style="display:inline-block;margin:0;color:#3c3b3e;font-size:32px;line-height:1;font-weight:800;vertical-align:middle;">
                     NeighBorrow
