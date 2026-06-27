@@ -12,7 +12,6 @@ type InitialData = {
 };
 
 type EmailTemplateParams = {
-  preview: string;
   heading: string;
   fullName: string;
   paragraphs: string[];
@@ -36,7 +35,6 @@ const escapeHtml = (value: string) =>
     .replace(/'/g, "&#39;");
 
 const createEmailTemplate = ({
-  preview,
   heading,
   fullName,
   paragraphs,
@@ -50,7 +48,7 @@ const createEmailTemplate = ({
   const paragraphHtml = paragraphs
     .map(
       paragraph => `
-        <p class="email-text" style="margin:0 0 28px;color:#3c3b3e;font-size:24px;line-height:1.45;font-weight:400;">
+        <p class="email-text" style="margin:0 0 22px;color:#3c3b3e;font-size:17px;line-height:1.6;font-weight:400;">
           ${escapeHtml(paragraph)}
         </p>`,
     )
@@ -66,40 +64,39 @@ const createEmailTemplate = ({
         <style>
           @media only screen and (max-width: 620px) {
             .email-shell { padding: 24px 14px !important; }
-            .email-label { padding-left: 12px !important; font-size: 16px !important; }
             .email-card { border-radius: 12px !important; }
-            .email-content { padding: 34px 26px 42px !important; }
-            .email-logo { width: 176px !important; height: auto !important; }
-            .email-heading { font-size: 28px !important; line-height: 1.28 !important; }
-            .email-text { font-size: 19px !important; line-height: 1.5 !important; }
+            .email-content { padding: 30px 24px 38px !important; }
+            .email-brand-icon { width: 30px !important; height: 31px !important; }
+            .email-brand-text { font-size: 30px !important; }
+            .email-heading { font-size: 24px !important; line-height: 1.35 !important; }
+            .email-text { font-size: 16px !important; line-height: 1.55 !important; }
             .email-button { display: block !important; width: 100% !important; box-sizing: border-box !important; text-align: center !important; }
           }
         </style>
       </head>
       <body style="margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;">
-        <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">
-          ${escapeHtml(preview)}
-        </div>
         <div class="email-shell" style="padding:38px 16px 52px;">
           <div style="max-width:920px;margin:0 auto;">
-            <div class="email-label" style="padding:0 0 14px;color:#a7aaa7;font-size:20px;font-weight:700;">
-              ${escapeHtml(preview)}
-            </div>
             <div class="email-card" style="background:#ffffff;border-radius:14px;">
-              <div class="email-content" style="padding:54px 66px 70px;">
-                <img
-                  src="${APP_URL}/images/logo-full.svg"
-                  width="211"
-                  height="32"
-                  alt="NeighBorrow"
-                  class="email-logo"
-                  style="display:block;width:211px;height:auto;border:0;outline:none;text-decoration:none;"
-                />
-                <div style="height:1px;line-height:1px;background:#3c3b3e;margin:50px 0 58px;">&nbsp;</div>
-                <h1 class="email-heading" style="margin:0 0 42px;color:#3c3b3e;font-size:34px;line-height:1.45;font-weight:800;">
+              <div class="email-content" style="padding:44px 56px 54px;">
+                <div style="display:flex;align-items:center;gap:14px;">
+                  <img
+                    src="${APP_URL}/images/logo.svg"
+                    width="31"
+                    height="32"
+                    alt=""
+                    class="email-brand-icon"
+                    style="display:block;width:31px;height:32px;border:0;outline:none;text-decoration:none;"
+                  />
+                  <span class="email-brand-text" style="color:#3c3b3e;font-size:34px;line-height:1;font-weight:800;">
+                    NeighBorrow
+                  </span>
+                </div>
+                <div style="height:1px;line-height:1px;background:#3c3b3e;margin:42px 0 46px;">&nbsp;</div>
+                <h1 class="email-heading" style="margin:0 0 30px;color:#3c3b3e;font-size:28px;line-height:1.35;font-weight:800;">
                   ${escapeHtml(heading)}
                 </h1>
-                <p class="email-text" style="margin:0 0 42px;color:#3c3b3e;font-size:24px;line-height:1.45;font-weight:400;">
+                <p class="email-text" style="margin:0 0 26px;color:#3c3b3e;font-size:17px;line-height:1.6;font-weight:400;">
                   Hi ${safeName},
                 </p>
                 <div>
@@ -108,12 +105,14 @@ const createEmailTemplate = ({
                 <a
                   href="${safeCtaUrl}"
                   class="email-button"
-                  style="display:inline-block;background:#d9bbff;border:2px solid #3c3b3e;border-radius:5px;color:#3c3b3e;font-size:20px;line-height:1.2;font-weight:400;text-decoration:none;padding:18px 28px;min-width:214px;text-align:center;margin:4px 0 42px;"
+                  style="display:inline-block;background:#d9bbff;border:2px solid #3c3b3e;border-radius:5px;color:#3c3b3e;font-size:16px;line-height:1.2;font-weight:400;text-decoration:none;padding:14px 24px;min-width:190px;text-align:center;margin:2px 0 34px;"
                 >
                   ${escapeHtml(ctaText)}
                 </a>
-                <p class="email-text" style="margin:0;color:#3c3b3e;font-size:24px;line-height:1.45;font-weight:400;">
-                  ${escapeHtml(closing)},<br />
+                <p class="email-text" style="margin:0 0 4px;color:#3c3b3e;font-size:17px;line-height:1.6;font-weight:400;">
+                  ${escapeHtml(closing)},
+                </p>
+                <p class="email-text" style="margin:0;color:#3c3b3e;font-size:17px;line-height:1.6;font-weight:400;">
                   ${escapeHtml(signoff)}
                 </p>
               </div>
@@ -161,8 +160,8 @@ export const { POST } = serve<InitialData>(async context => {
     await sendEmail({
       email,
       subject: "Welcome to NeighBorrow, the place where you can borrow anything you want!",
+      deduplicationId: `onboarding-welcome-${email}`,
       message: createEmailTemplate({
-        preview: "Welcome to NeighBorrow Email",
         heading: "Welcome to NeighBorrow, the place where you can borrow anything you want!",
         fullName,
         paragraphs: [
@@ -177,18 +176,22 @@ export const { POST } = serve<InitialData>(async context => {
 
   await context.sleep("wait-for-3-days", 60 * 60 * 24 * 3);
 
+  let reminderCount = 0;
+
   while (true) {
-    const state = await context.run("check-user-state", async () => {
+    reminderCount += 1;
+
+    const state = await context.run(`check-user-state-${reminderCount}`, async () => {
       return await getUserState(email);
     });
 
     if (state === "non-active") {
-      await context.run("send-email-non-active", async () => {
+      await context.run(`send-email-non-active-${reminderCount}`, async () => {
         await sendEmail({
           email,
           subject: "We Miss You at NeighBorrow!",
+          deduplicationId: `${context.workflowRunId}-inactive-${reminderCount}`,
           message: createEmailTemplate({
-            preview: "Inactivity Reminder (3+ Days)",
             heading: "We Miss You at NeighBorrow!",
             fullName,
             paragraphs: [
@@ -203,12 +206,12 @@ export const { POST } = serve<InitialData>(async context => {
         });
       });
     } else if (state === "active") {
-      await context.run("send-email-active", async () => {
+      await context.run(`send-email-active-${reminderCount}`, async () => {
         await sendEmail({
           email,
           subject: "Welcome back to NeighBorrow!",
+          deduplicationId: `${context.workflowRunId}-active-${reminderCount}`,
           message: createEmailTemplate({
-            preview: "Welcome Back Email",
             heading: "Welcome back to NeighBorrow!",
             fullName,
             paragraphs: [
@@ -222,6 +225,6 @@ export const { POST } = serve<InitialData>(async context => {
       });
     }
 
-    await context.sleep("wait-for-1-month", 60 * 60 * 24 * 30);
+    await context.sleep(`wait-for-1-month-${reminderCount}`, 60 * 60 * 24 * 30);
   }
 });

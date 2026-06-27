@@ -13,12 +13,15 @@ export const sendEmail = async ({
   email,
   subject,
   message,
+  deduplicationId,
 }: {
   email: string;
   subject: string;
   message: string;
+  deduplicationId?: string;
 }) => {
   await qStashClient.publishJSON({
+    deduplicationId,
     api: {
       name: "email",
       provider: resend({ token: config.env.upstash.resendToken }),
