@@ -68,8 +68,8 @@ const createEmailTemplate = ({
             .email-card { border-radius: 12px !important; }
             .email-content { padding: 30px 24px 38px !important; }
             .email-brand-icon { width: 30px !important; height: 31px !important; }
-            .email-brand-text { font-size: 30px !important; }
-            .email-heading { font-size: 24px !important; line-height: 1.35 !important; }
+            .email-brand-text { font-size: 28px !important; }
+            .email-heading { font-size: 23px !important; line-height: 1.35 !important; }
             .email-text { font-size: 16px !important; line-height: 1.55 !important; }
             .email-button { display: block !important; width: 100% !important; box-sizing: border-box !important; text-align: center !important; }
           }
@@ -80,7 +80,7 @@ const createEmailTemplate = ({
           <div style="max-width:920px;margin:0 auto;">
             <div class="email-card" style="background:#ffffff;border-radius:14px;">
               <div class="email-content" style="padding:44px 56px 54px;">
-                <div style="text-align:center;">
+                <div style="text-align:start;">
                   <img
                     src="${APP_URL}/images/logo.svg"
                     width="31"
@@ -89,12 +89,12 @@ const createEmailTemplate = ({
                     class="email-brand-icon"
                     style="display:inline-block;width:31px;height:32px;border:0;outline:none;text-decoration:none;margin:0 14px 0 0;vertical-align:middle;"
                   />
-                  <p class="email-brand-text" style="display:inline-block;margin:0;color:#3c3b3e;font-size:34px;line-height:1;font-weight:800;vertical-align:middle;">
+                  <p class="email-brand-text" style="display:inline-block;margin:0;color:#3c3b3e;font-size:32px;line-height:1;font-weight:800;vertical-align:middle;">
                     NeighBorrow
                   </p>
                 </div>
                 <div style="height:1px;line-height:1px;background:#3c3b3e;margin:40px 0 40px;">&nbsp;</div>
-                <h1 class="email-heading" style="margin:0 0 30px;color:#3c3b3e;font-size:28px;line-height:1.35;font-weight:800;">
+                <h1 class="email-heading" style="margin:0 0 30px;color:#3c3b3e;font-size:26px;line-height:1.35;font-weight:800;">
                   ${escapeHtml(heading)}
                 </h1>
                 <p class="email-text" style="margin:0 0 26px;color:#3c3b3e;font-size:17px;line-height:1.6;font-weight:400;">
