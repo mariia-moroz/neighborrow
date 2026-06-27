@@ -84,13 +84,13 @@ const createEmailTemplate = ({
                     src="${APP_URL}/images/logo.svg"
                     width="31"
                     height="32"
-                    alt=""
+                    alt="logo"
                     class="email-brand-icon"
                     style="display:block;width:31px;height:32px;border:0;outline:none;text-decoration:none;"
                   />
-                  <div class="email-brand-text" style="font-size:34px;line-height:1;font-weight:800;">
+                  <p class="email-brand-text" style="color:#3c3b3e;font-size:34px;line-height:1;font-weight:800;">
                     NeighBorrow
-                  </div>
+                  </p>
                 </div>
                 <div style="height:1px;line-height:1px;background:#3c3b3e;margin:42px 0 46px;">&nbsp;</div>
                 <h1 class="email-heading" style="margin:0 0 30px;color:#3c3b3e;font-size:28px;line-height:1.35;font-weight:800;">
@@ -105,12 +105,14 @@ const createEmailTemplate = ({
                 <a
                   href="${safeCtaUrl}"
                   class="email-button"
-                  style="display:inline-block;background:#d9bbff;border:2px solid #3c3b3e;border-radius:5px;color:#3c3b3e;font-size:16px;line-height:1.2;font-weight:400;text-decoration:none;padding:14px 24px;min-width:190px;text-align:center;margin:2px 0 2px;"
+                  style="display:inline-block;background:#d9bbff;border:2px solid #3c3b3e;border-radius:5px;color:#3c3b3e;font-size:16px;line-height:1.2;font-weight:400;text-decoration:none;padding:14px 24px;min-width:190px;text-align:center;margin:2px 0 10px;"
                 >
                   ${escapeHtml(ctaText)}
                 </a>
-                <p class="email-text" style="margin:0;color:#3c3b3e;font-size:17px;line-height:1.6;font-weight:400;">
+                 <p class="email-text" style="margin:0 0 4px;color:#3c3b3e;font-size:17px;line-height:1.6;font-weight:400;">
                   ${escapeHtml(closing)},
+                </p>
+                <p class="email-text" style="margin:0;color:#3c3b3e;font-size:17px;line-height:1.6;font-weight:400;">
                   ${escapeHtml(signoff)}
                 </p>
               </div>
