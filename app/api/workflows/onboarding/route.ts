@@ -51,11 +51,11 @@ export const { POST } = serve<InitialData>(async context => {
     await sendEmail({
       email,
       subject: "Welcome to NeighBorrow, the place where you can borrow anything you want!",
-      message: `Hi ${fullName},
+      message: `Hi ${fullName},\n\n
       
-      Welcome to NeighBorrow! We're excited to have you join our community. Explore a wide range of items and borrow with ease, we've got you and everything you need!
+      Welcome to NeighBorrow! We're excited to have you join our community. Explore a wide range of items and borrow with ease, we've got you and everything you need!\n\n
       
-      Good luck,
+      Good luck,\n
       The NeighBorrow Team`,
     });
   });
@@ -72,13 +72,13 @@ export const { POST } = serve<InitialData>(async context => {
         await sendEmail({
           email,
           subject: "We Miss You at NeighBorrow!",
-          message: `Hi ${fullName},
+          message: `Hi ${fullName},\n\n
           
-          It's been a while since we last saw you - over three days, to be exact! New items are waiting for you, and your next great borrow might just be a click away.
+          It's been a while since we last saw you - over three days, to be exact! New items are waiting for you, and your next great borrow might just be a click away.\n\n
           
-          Come back and explore now!
+          Come back and explore now!\n\n
           
-          See you soon,
+          See you soon,\n
           The NeighBorrow Team`,
         });
       });
@@ -87,11 +87,11 @@ export const { POST } = serve<InitialData>(async context => {
         await sendEmail({
           email,
           subject: "Welcome to back NeighBorrow, the place where you can borrow anything you want!",
-          message: `Hi ${fullName},
+          message: `Hi ${fullName},\n\n
           
-          Welcome to NeighBorrow! We're excited to have you back. Explore a wide range of items and borrow with ease, we've got you and everything you need!
+          Welcome to NeighBorrow! We're excited to have you back. Explore a wide range of items and borrow with ease, we've got you and everything you need!\n\n
           
-          Good luck,
+          Good luck,\n
           The NeighBorrow Team`,
         });
       });
