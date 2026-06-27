@@ -24,7 +24,7 @@ export const sendEmail = async ({
       provider: resend({ token: config.env.upstash.resendToken }),
     },
     body: {
-      from: "NeighBorrow <neighborrow.heymmdev.com>",
+      from: "NeighBorrow <contact@heymmdev.com>",
       to: [email],
       subject: subject,
       html: message,
