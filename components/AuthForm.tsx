@@ -19,7 +19,7 @@ interface Props<T extends FieldValues> {
   type: "SIGN_IN" | "SIGN_UP";
   formSchema: ZodType<T, T>;
   defaultValues: T;
-  onSubmit: (data: T) => Promise<{ success: boolean; error?: string }>;
+  onSubmit: (data: T) => Promise<{ success: boolean; error?: string; redirect?: string }>;
 }
 
 const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSubmit }: Props<T>) => {
@@ -45,6 +45,9 @@ const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSu
       toast.error(`Error ${isSignIn ? "signing in" : "signing up"}`, {
         description: result.error ?? "An error occured",
       });
+      if (result.redirect) {
+        router.push(result.redirect);
+      }
     }
     setIsLoading(false);
   };

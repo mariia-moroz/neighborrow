@@ -1,6 +1,7 @@
 "use server";
 
 import { signIn } from "@/auth";
+import { AuthError } from "next-auth";
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
 import { hash } from "bcryptjs";
@@ -21,6 +22,16 @@ export const signInWithCredentials = async (params: Pick<AuthCredentials, "email
     return redirect("/too-fast");
   }
 
+  const existingUser = await db.select().from(users).where(eq(users.email, email)).limit(1);
+
+  if (existingUser.length === 0) {
+    return {
+      success: false,
+      error: "Account doesn't exist yet, please register first",
+      redirect: "/sign-up",
+    };
+  }
+
   try {
     const result = await signIn("credentials", { email, password, redirect: false });
 
@@ -30,6 +41,10 @@ export const signInWithCredentials = async (params: Pick<AuthCredentials, "email
 
     return { success: true };
   } catch (error) {
+    if (error instanceof AuthError && error.type === "CredentialsSignin") {
+      return { success: false, error: "Invalid credentials" };
+    }
+
     console.log(error, "Sign in error");
     return { success: false, error: "Sign in error" };
   }
