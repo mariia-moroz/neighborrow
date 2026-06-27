@@ -106,7 +106,7 @@ const createEmailTemplate = ({
                 <a
                   href="${safeCtaUrl}"
                   class="email-button"
-                  style="display:inline-block;background:#d9bbff;border:2px solid #3c3b3e;border-radius:5px;color:#3c3b3e;font-size:16px;line-height:1.2;font-weight:400;text-decoration:none;padding:14px 24px;min-width:190px;text-align:center;margin:2px 0 20px;"
+                  style="display:inline-block;background:#d9bbff;border:1px solid #3c3b3e;border-radius:5px;color:#3c3b3e;font-size:16px;line-height:1.2;font-weight:400;text-decoration:none;padding:14px 24px;min-width:190px;text-align:center;margin:2px 0 20px;"
                 >
                   ${escapeHtml(ctaText)}
                 </a>
