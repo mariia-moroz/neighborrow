@@ -24,7 +24,6 @@ type EmailTemplateParams = {
 
 const APP_URL = "https://myneighborrow.vercel.app";
 const ONE_DAY = 24 * 60 * 60 * 1000;
-const THREE_DAYS = 3 * ONE_DAY;
 const THIRTY_DAYS = 30 * ONE_DAY;
 
 const escapeHtml = (value: string) =>
@@ -141,7 +140,7 @@ const getUserState = async (email: string): Promise<UserState> => {
     const now = new Date();
     const timeDifference = now.getTime() - lastActivityDate.getTime();
 
-    if (timeDifference > THREE_DAYS && timeDifference <= THIRTY_DAYS) {
+    if (timeDifference >= THIRTY_DAYS) {
       return "non-active";
     }
 
@@ -175,57 +174,31 @@ export const { POST } = serve<InitialData>(async context => {
     });
   });
 
-  await context.sleep("wait-for-3-days", 60 * 60 * 24 * 3);
+  await context.sleep("wait-for-30-days", 60 * 60 * 24 * 30);
 
-  let reminderCount = 0;
+  const state = await context.run("check-user-state-after-30-days", async () => {
+    return await getUserState(email);
+  });
 
-  while (true) {
-    reminderCount += 1;
-
-    const state = await context.run(`check-user-state-${reminderCount}`, async () => {
-      return await getUserState(email);
+  if (state === "non-active") {
+    await context.run("send-email-non-active-after-30-days", async () => {
+      await sendEmail({
+        email,
+        subject: "We Miss You at NeighBorrow!",
+        deduplicationId: `onboarding-inactive-${userId}`,
+        message: createEmailTemplate({
+          heading: "We Miss You at NeighBorrow!",
+          fullName,
+          paragraphs: [
+            "It's been a while since we last saw you - over thirty days, to be exact! New items are waiting for you, and your next great borrow might just be a click away.",
+            "Come back and explore now:",
+          ],
+          ctaText: "Explore Items",
+          ctaUrl: `${APP_URL}/`,
+          closing: "See you soon",
+          signoff: "The NeighBorrow Team",
+        }),
+      });
     });
-
-    if (state === "non-active") {
-      await context.run(`send-email-non-active-${reminderCount}`, async () => {
-        await sendEmail({
-          email,
-          subject: "We Miss You at NeighBorrow!",
-          deduplicationId: `${context.workflowRunId}-inactive-${reminderCount}`,
-          message: createEmailTemplate({
-            heading: "We Miss You at NeighBorrow!",
-            fullName,
-            paragraphs: [
-              "It's been a while since we last saw you - over three days, to be exact! New items are waiting for you, and your next great borrow might just be a click away.",
-              "Come back and explore now:",
-            ],
-            ctaText: "Explore Items",
-            ctaUrl: `${APP_URL}/`,
-            closing: "See you soon",
-            signoff: "The NeighBorrow Team",
-          }),
-        });
-      });
-    } else if (state === "active") {
-      await context.run(`send-email-active-${reminderCount}`, async () => {
-        await sendEmail({
-          email,
-          subject: "Welcome back to NeighBorrow!",
-          deduplicationId: `${context.workflowRunId}-active-${reminderCount}`,
-          message: createEmailTemplate({
-            heading: "Welcome back to NeighBorrow!",
-            fullName,
-            paragraphs: [
-              "We're excited to see you back in the community. Keep exploring local items, borrowing with ease, and making the most of what your neighborhood has to offer.",
-              "Explore the latest items now:",
-            ],
-            ctaText: "Explore Items",
-            ctaUrl: `${APP_URL}/`,
-          }),
-        });
-      });
-    }
-
-    await context.sleep(`wait-for-1-month-${reminderCount}`, 60 * 60 * 24 * 30);
   }
 });
