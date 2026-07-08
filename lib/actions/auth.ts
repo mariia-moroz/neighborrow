@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
@@ -48,6 +48,10 @@ export const signInWithCredentials = async (params: Pick<AuthCredentials, "email
     console.log(error, "Sign in error");
     return { success: false, error: "Sign in error" };
   }
+};
+
+export const signOutCurrentUser = async () => {
+  await signOut();
 };
 
 export const signUp = async (params: AuthCredentials) => {

@@ -18,3 +18,17 @@ interface AuthCredentials {
   address: string;
   idConfirmation: string;
 }
+
+interface ItemParams {
+  title: string;
+  category: string;
+  rating: number;
+  totalItems: number;
+  summary: string;
+  description: string;
+  image: string;
+  condition: string;
+  included: string;
+  brand: string;
+  borrowDuration: number;
+}

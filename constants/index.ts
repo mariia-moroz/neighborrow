@@ -21,6 +21,14 @@ export const FIELD_PLACEHOLDERS = {
   idConfirmation: "Upload your ID (file upload)",
 };
 
+export const adminSideBarLinks = [
+  { icon: "house", route: "/admin", text: "Home" },
+  { icon: "users-round", route: "/admin/users", text: "All Users" },
+  { icon: "drill", route: "/admin/items", text: "All Items" },
+  { icon: "clipboard-clock", route: "/admin/item-requests", text: "Borrow Requests" },
+  { icon: "user-round", route: "/admin/account-requests", text: "Account Requests" },
+];
+
 export const sampleItems = [
   {
     id: 1,
