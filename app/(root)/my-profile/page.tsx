@@ -1,19 +1,12 @@
 import ItemList from "@/components/ItemList";
 import { Button } from "@/components/ui/button";
 import { sampleItems } from "@/constants";
-import { signOut } from "@/auth";
+import { signOutCurrentUser } from "@/lib/actions/auth";
 
 const Page = async () => {
   return (
     <>
-      <form
-        action={async () => {
-          "use server";
-
-          await signOut();
-        }}
-        className='mb-10'
-      >
+      <form action={signOutCurrentUser} className='mb-10'>
         <Button>Logout</Button>
       </form>
 
