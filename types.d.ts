@@ -1,14 +1,19 @@
 interface Item {
-  id: number;
+  id: string;
   title: string;
   category: string;
   rating: number;
-  total_items: number;
-  available_items: number;
+  totalItems: number;
+  availableItems: number;
+  available: boolean;
   summary: string;
+  description: string;
   image: string;
-  available?: boolean;
-  borrow_duration: number;
+  condition: string;
+  included: string;
+  brand: string;
+  borrowDuration: number;
+  createdAt: Date | null;
 }
 
 interface AuthCredentials {

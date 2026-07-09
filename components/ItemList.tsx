@@ -7,9 +7,14 @@ interface Props {
 }
 
 const ItemList = ({ title, items, containerClassName }: Props) => {
+  if (items.length < 2) {
+    return;
+  }
+
   return (
     <section className={containerClassName}>
       <h2 className='item-list-header'>{title}</h2>
+
       <ul className='item-list'>
         {items.map(item => (
           <ItemCard key={item.id} {...item} />

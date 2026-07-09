@@ -34,7 +34,7 @@ const ItemForm = ({ type, ...item }: Props) => {
     defaultValues: {
       title: item.title ?? "",
       category: item.category ?? "",
-      rating: item.rating ?? 1,
+      rating: item.rating ?? 5,
       totalItems: item.totalItems ?? 1,
       summary: item.summary ?? "",
       description: item.description ?? "",
@@ -137,6 +137,7 @@ const ItemForm = ({ type, ...item }: Props) => {
                   type='number'
                   min={1}
                   max={5}
+                  step={0.1}
                 />
 
                 {fieldState.invalid && <FieldError errors={[fieldState.error]} />}

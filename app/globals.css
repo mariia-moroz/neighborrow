@@ -285,7 +285,7 @@
   }
 
   .item-image {
-    @apply flex flex-1 border-10 border-secondary rounded-4xl overflow-hidden aspect-square max-w-full;
+    @apply relative w-full max-w-[400px] aspect-square border-10 border-secondary rounded-4xl overflow-hidden xl:max-w-[480px] xl:flex-none;
   }
 
   .item-details {

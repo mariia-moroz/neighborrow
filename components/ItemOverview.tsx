@@ -2,15 +2,19 @@ import Image from "next/image";
 import { Rating } from "@/components/reui/rating";
 import { Button } from "./ui/button";
 
+type ItemOverviewProps = Item & {
+  userId: string;
+};
+
 const ItemOverview = ({
   title,
   category,
   rating,
-  total_items,
-  available_items,
+  totalItems,
+  availableItems,
   summary,
   image = "/images/item-placeholder.png",
-}: Item) => {
+}: ItemOverviewProps) => {
   return (
     <section className='item-overview'>
       <div className='flex flex-2 flex-col gap-5'>
@@ -27,10 +31,10 @@ const ItemOverview = ({
 
         <div className='item-copies'>
           <p>
-            Total items:<span>{total_items}</span>
+            Total items:<span>{totalItems}</span>
           </p>
           <p>
-            Available:<span>{available_items}</span>
+            Available:<span>{availableItems}</span>
           </p>
         </div>
 
@@ -43,7 +47,16 @@ const ItemOverview = ({
       </div>
 
       <div className='item-image'>
-        <Image src={image} alt={title} width={400} height={400} loading='eager' className='w-full bg-cover' />
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes='(min-width: 1280px) 480px, 400px'
+          loading='lazy'
+          placeholder='blur'
+          blurDataURL='/images/item-placeholder.png'
+          className='w-full bg-cover'
+        />
       </div>
     </section>
   );
