@@ -42,7 +42,7 @@ const ItemOverview = ({
 
         <Button className='item-overview_btn'>
           <Image src='/icons/claw.svg' alt='claw' width={24} height={24} />
-          <p className='font-medium text-xl'>Borrow Item Request</p>
+          <p className='font-medium text-lg'>Borrow Item Request</p>
         </Button>
       </div>
 
