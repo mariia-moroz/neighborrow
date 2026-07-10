@@ -294,7 +294,7 @@
   }
 
   .item-details p {
-    @apply text-xl font-medium;
+    @apply text-lg md:text-xl font-medium;
   }
 
   .item-copies {
@@ -302,7 +302,7 @@
   }
 
   .item-copies p {
-    @apply text-xl font-medium!;
+    @apply text-lg md:text-xl font-medium!;
   }
 
   .item-copies p span {
