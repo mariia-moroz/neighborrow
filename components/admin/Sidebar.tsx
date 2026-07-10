@@ -41,17 +41,11 @@ const Sidebar = ({ session }: { session: Session }) => {
     <div className='admin-sidebar'>
       <div>
         <Link href='/' prefetch={false} className='cursor-pointer logo'>
-          <Image
-            src='/images/logo.svg'
-            alt='logo'
-            loading='eager'
-            width={31}
-            height={32}
-          />
+          <Image src='/images/logo.svg' alt='logo' loading='eager' width={31} height={32} />
           <h1>NeighBorrow</h1>
         </Link>
 
-        <div className='mt-10 flex flex-col gap-5'>
+        <div className='mt-10 flex flex-col gap-4'>
           {adminSideBarLinks.map(link => {
             const isSelected =
               (link.route !== "/admin" && pathname.includes(link.route) && link.route.length > 1) ||

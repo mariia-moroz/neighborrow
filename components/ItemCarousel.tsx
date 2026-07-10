@@ -43,8 +43,8 @@ const ItemCarousel = ({ title, items, containerClassName }: Props) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className='bg-white! border! border-border! cursor-pointer!' />
+        <CarouselNext className='bg-white! border! border-border! cursor-pointer!' />
       </Carousel>
     </section>
   );

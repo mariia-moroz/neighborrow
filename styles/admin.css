@@ -148,7 +148,7 @@
 
   /* Sidebar */
   .admin-sidebar {
-    @apply sticky left-0 top-0 flex h-dvh flex-col justify-between bg-white px-2 pb-2 pt-10 xs:px-5 xs:pb-5 xs:pt-10 border-r border-border lg:max-w-[25%];
+    @apply sticky left-0 top-0 flex min-h-dvh flex-col justify-between bg-white px-2 pb-2 pt-10 xs:px-5 xs:pb-5 xs:pt-10 border-r border-border lg:max-w-[25%];
   }
 
   .admin-sidebar .logo {
