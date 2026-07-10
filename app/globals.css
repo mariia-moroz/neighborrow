@@ -97,10 +97,10 @@
   a[x-apple-data-detectors],
   .ios-no-link,
   .ios-no-link * {
-    color: inherit !important;
     border-bottom: 0 !important;
     text-decoration: none !important;
     -webkit-text-decoration-line: none !important;
+    @apply text-muted-special-text!;
   }
 
   .hide-scrollbar::-webkit-scrollbar {

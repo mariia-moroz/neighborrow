@@ -17,7 +17,7 @@ const ItemOverview = ({
 }: ItemOverviewProps) => {
   return (
     <section className='item-overview'>
-      <div className='flex flex-2 flex-col gap-5'>
+      <div className='flex flex-2 flex-col gap-3 md:gap-5'>
         <h1>{title}</h1>
         <div className='item-details'>
           <p className='flex gap-2'>
