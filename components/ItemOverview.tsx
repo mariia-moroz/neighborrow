@@ -50,12 +50,13 @@ const ItemOverview = ({
         <Image
           src={image}
           alt={title}
-          fill
+          width={480}
+          height={480}
           sizes='(min-width: 1280px) 480px, 400px'
-          loading='lazy'
+          loading='eager'
           placeholder='blur'
           blurDataURL='/images/item-placeholder.png'
-          className='h-full w-full object-cover'
+          className='block h-full w-full object-cover'
         />
       </div>
     </section>
