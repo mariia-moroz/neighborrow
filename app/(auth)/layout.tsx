@@ -21,7 +21,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
             loading='eager'
             width={235}
             height={247}
-            className='w-[20%] lg:w-[30%]'
+            className='w-[15%] md:w-[20%] lg:w-[30%]'
           />
         </section>
 
