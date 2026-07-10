@@ -122,7 +122,7 @@ function Rating({
           {/* Background star (empty) */}
           <StarIcon
             data-slot='rating-star-empty'
-            className={cn(starVariants({ size }), "text-muted-foreground/30")}
+            className={cn(starVariants({ size }), "text-muted-foreground/30", starClassName)}
           />
 
           {/* Filled star */}
@@ -134,7 +134,7 @@ function Rating({
           >
             <StarIcon
               data-slot='rating-star-filled'
-              className={cn(starVariants({ size }), "fill-secondary text-secondary")}
+              className={cn(starVariants({ size }), "fill-secondary text-secondary", starClassName)}
             />
           </div>
         </div>,

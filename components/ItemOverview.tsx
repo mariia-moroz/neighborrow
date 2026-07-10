@@ -25,7 +25,7 @@ const ItemOverview = ({
           </p>
           <div className='item-rating'>
             <p>Rating:</p>
-            <Rating rating={rating} size='lg' />
+            <Rating rating={rating} className='md:gap-3' starClassName='md:size-6' />
           </div>
         </div>
 
