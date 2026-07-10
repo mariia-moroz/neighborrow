@@ -21,13 +21,20 @@ const Layout = async ({ children }: { children: ReactNode }) => {
             loading='eager'
             width={235}
             height={247}
-            className='w-[15%] md:w-[20%] lg:w-[30%]'
+            className='w-[30%]'
           />
         </section>
 
         <section className='auth-form'>
           <div className='auth-box'>
-            <Image src='/images/logo-full.svg' alt='logo' loading='eager' width={211} height={32} />
+            <Image
+              src='/images/logo-full.svg'
+              alt='logo'
+              loading='eager'
+              width={211}
+              height={32}
+              className='w-50'
+            />
             <div>{children}</div>
           </div>
         </section>

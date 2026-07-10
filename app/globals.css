@@ -185,7 +185,7 @@
   }
 
   .auth-box {
-    @apply bg-card mx-auto my-auto flex max-w-xl flex-col gap-7 xs:gap-9 rounded-xl py-10 px-7 sm:p-10 border border-border;
+    @apply bg-card mx-auto my-auto flex max-w-xl flex-col gap-7 xs:gap-9 rounded-xl py-10 px-6 xs:px-7 sm:p-10 border border-border;
   }
 
   .auth-illustration {

@@ -53,7 +53,7 @@ const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSu
   };
 
   return (
-    <div className='flex flex-col gap-5 md:gap-8'>
+    <div className='flex flex-col gap-5 md:gap-7'>
       <h1 className='text-2xl sm:text-3xl! font-bold'>
         {isSignIn ? "Welcome Back!" : "Create Your Account"}
       </h1>
@@ -63,7 +63,7 @@ const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSu
           : "Please complete all fields and upload a valid ID to explore and borrow items :)"}
       </p>
       <form id='auth-form' className='w-full' onSubmit={form.handleSubmit(handleSubmit)}>
-        <FieldGroup className='w-full gap-5'>
+        <FieldGroup className='w-full gap-4 lg:gap-5'>
           {Object.keys(defaultValues).map(fieldName => (
             <Controller
               key={fieldName}
