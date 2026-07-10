@@ -38,7 +38,7 @@ const ItemOverview = ({
           </p>
         </div>
 
-        <p className='item-description'>{summary}</p>
+        <p className='item-description max-sm:[word-spacing:-2px]'>{summary}</p>
 
         <Button className='item-overview_btn'>
           <Image src='/icons/claw.svg' alt='claw' width={24} height={24} />
