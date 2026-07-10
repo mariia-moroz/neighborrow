@@ -15,6 +15,13 @@
       "when": 1783451368386,
       "tag": "0001_cute_chimera",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1783523644860,
+      "tag": "0002_romantic_molten_man",
+      "breakpoints": true
     }
   ]
 }

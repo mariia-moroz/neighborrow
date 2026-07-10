@@ -151,7 +151,7 @@
   }
 
   .main-button {
-    @apply py-3! px-4! min-h-12! border border-foreground! rounded-md font-medium! text-base! bg-primary cursor-pointer;
+    @apply py-3! px-8! min-h-12! border border-foreground! rounded-md font-medium! text-base! bg-primary cursor-pointer;
   }
 
   /* Auth */
@@ -285,7 +285,7 @@
   }
 
   .item-image {
-    @apply flex flex-1 border-10 border-secondary rounded-4xl overflow-hidden aspect-square max-w-full;
+    @apply relative w-full max-w-[480px] aspect-square border-10 border-secondary rounded-4xl overflow-hidden xl:max-w-[480px] xl:flex-none;
   }
 
   .item-details {
@@ -313,6 +313,6 @@
   }
 
   .item-overview_btn {
-    @apply mt-4 px-5! min-h-13 w-fit bg-special-accent! hover:bg-special-accent/90! text-foreground max-md:w-full! cursor-pointer border! border-foreground!;
+    @apply mt-4 flex gap-1 px-8! min-h-13 w-fit bg-special-accent! hover:bg-special-accent/90! text-foreground max-md:w-full! cursor-pointer border! border-foreground!;
   }
 }

@@ -8,7 +8,7 @@ const Page = async () => {
 
   return (
     <>
-      <ItemList title='Borrowed Items' items={latestBooks} />
+      <ItemList title='Search Results' items={latestBooks} />
     </>
   );
 };

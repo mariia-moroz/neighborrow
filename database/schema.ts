@@ -1,4 +1,15 @@
-import { pgEnum, pgTable, text, timestamp, uuid, varchar, date, integer, boolean } from "drizzle-orm/pg-core";
+import {
+  pgEnum,
+  pgTable,
+  text,
+  timestamp,
+  uuid,
+  varchar,
+  date,
+  integer,
+  boolean,
+  doublePrecision,
+} from "drizzle-orm/pg-core";
 
 export const STATUS_ENUM = pgEnum("status", ["PENDING", "APPROVED", "REGECTED"]);
 export const ROLE_ENUM = pgEnum("role", ["USER", "ADMIN"]);
@@ -30,7 +41,7 @@ export const items = pgTable("items", {
   category: varchar("category", {
     length: 255,
   }).notNull(),
-  rating: integer("rating").notNull(),
+  rating: doublePrecision("rating").notNull(),
   totalItems: integer("total_items").notNull().default(1),
   availableItems: integer("available_items").notNull().default(1),
   available: boolean("available").notNull(),
