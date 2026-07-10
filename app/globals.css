@@ -43,6 +43,7 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --text-md: 18px;
   --breakpoint-xxs: 400px;
   --breakpoint-xs: 480px;
   --breakpoint-desktop: 1600px;
@@ -277,7 +278,7 @@
     @apply flex flex-col-reverse items-center gap-12 xl:flex-row xl:items-start xl:gap-20;
   }
   .item-overview h1 {
-    @apply text-5xl font-bold md:text-6xl desktop:text-7xl;
+    @apply text-3xl font-bold md:text-6xl desktop:text-7xl;
   }
 
   .item-info {
@@ -309,7 +310,7 @@
   }
 
   .item-description {
-    @apply mt-2 text-justify text-xl;
+    @apply mt-2 text-justify text-lg md:text-xl;
   }
 
   .item-overview_btn {
