@@ -94,9 +94,13 @@
     @apply font-sans;
   }
 
-  a[x-apple-data-detectors] {
+  a[x-apple-data-detectors],
+  .ios-no-link,
+  .ios-no-link * {
     color: inherit !important;
+    border-bottom: 0 !important;
     text-decoration: none !important;
+    -webkit-text-decoration-line: none !important;
   }
 
   .hide-scrollbar::-webkit-scrollbar {

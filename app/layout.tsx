@@ -14,6 +14,11 @@ const nunitoSans = Nunito({
 export const metadata: Metadata = {
   title: "NeighBorrow",
   description: "NeighBorrow - borrow items you need, we have it all!",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
 };
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {

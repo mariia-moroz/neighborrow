@@ -70,7 +70,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ name, email, isAdmin, className
           {/* User Info Section */}
           <div className='border-b border-border mx-3 sm:mx-4 py-5 px-3 sm:p-4'>
             <p className='text-base font-semibold'>{name}</p>
-            <p className='mt-1 text-xs text-muted-special-text no-underline sm:text-xs'>{email}</p>
+            <p className='ios-no-link mt-1 text-xs text-muted-special-text no-underline sm:text-xs'>{email}</p>
           </div>
 
           {/* Navigation Links */}

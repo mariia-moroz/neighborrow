@@ -3,7 +3,22 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <footer className='w-full flex mt-auto'>
-      <Image src='/images/footer.svg' alt='footer' height={375} width={2400} loading='eager'/>
+      <Image
+        src='/images/footer.svg'
+        alt='footer'
+        height={375}
+        width={2400}
+        loading='eager'
+        className='max-sm:hidden'
+      />
+      <Image
+        src='/images/cutie.svg'
+        alt='footer'
+        height={375}
+        width={2400}
+        loading='eager'
+        className='sm:hidden'
+      />
     </footer>
   );
 };
