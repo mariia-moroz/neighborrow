@@ -14,7 +14,7 @@ const ItemCard = ({ id, title, category, rating, image, available, borrowDuratio
           loading='lazy'
           placeholder='blur'
           blurDataURL='/images/item-placeholder.png'
-          className='w-full bg-cover'
+          className='w-full bg-cover rounded-lg'
         />
       </div>
       <div>

@@ -55,7 +55,7 @@ const ItemOverview = ({
           loading='lazy'
           placeholder='blur'
           blurDataURL='/images/item-placeholder.png'
-          className='w-full bg-cover'
+          className='w-full bg-cover rounded-xl'
         />
       </div>
     </section>
