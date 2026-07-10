@@ -53,11 +53,11 @@ const AuthForm = <T extends FieldValues>({ type, formSchema, defaultValues, onSu
   };
 
   return (
-    <div className='flex flex-col gap-6 xs:gap-8'>
+    <div className='flex flex-col gap-5 md:gap-8'>
       <h1 className='text-2xl sm:text-3xl! font-bold'>
         {isSignIn ? "Welcome Back!" : "Create Your Account"}
       </h1>
-      <p className='text-md lg:text-lg'>
+      <p className='text-base md:text-md lg:text-lg'>
         {isSignIn
           ? "Access the vast collection of items, and stay updated :)"
           : "Please complete all fields and upload a valid ID to explore and borrow items :)"}
