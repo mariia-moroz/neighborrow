@@ -52,7 +52,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ name, email, isAdmin, className
           {/* Header */}
           <div className='flex items-center justify-between p-3 sm:p-4'>
             <Image src='/icons/profile-icon.svg' alt='profile' loading='eager' width={32} height={32} />
-            <h2 className='font-semibold text-medium sm:text-lg'>Menu</h2>
+            <h2 className='font-semibold text-md sm:text-lg'>Menu</h2>
             <div className='flex items-center gap-2 sm:gap-3'>
               <button
                 onClick={e => {
@@ -70,7 +70,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ name, email, isAdmin, className
           {/* User Info Section */}
           <div className='border-b border-border mx-3 sm:mx-4 py-5 px-3 sm:p-4'>
             <p className='text-base font-semibold'>{name}</p>
-            <p className='ios-no-link mt-1 text-xs text-muted-special-text no-underline xs:text-sm'>
+            <p className='ios-no-link mt-1 text-xs text-muted-special-text no-underline xxs:text-sm'>
               {email}
             </p>
           </div>
