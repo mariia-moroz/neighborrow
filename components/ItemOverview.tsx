@@ -1,12 +1,15 @@
 import Image from "next/image";
 import { Rating } from "@/components/reui/rating";
-import { Button } from "./ui/button";
+import BorrowItem from "./BorrowItem";
+import { db } from "@/database/drizzle";
+import { borrowRecords, users } from "@/database/schema";
+import { and, eq } from "drizzle-orm";
 
-type ItemOverviewProps = Item & {
+interface ItemOverviewProps extends Item {
   userId: string;
-};
+}
 
-const ItemOverview = ({
+const ItemOverview = async ({
   title,
   category,
   rating,
@@ -14,7 +17,34 @@ const ItemOverview = ({
   availableItems,
   summary,
   image = "/images/item-placeholder.png",
+  id,
+  userId,
 }: ItemOverviewProps) => {
+  const [user] = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+
+  if (!user) {
+    return null;
+  }
+
+  const [borrowedRecord] = await db
+    .select({ id: borrowRecords.id })
+    .from(borrowRecords)
+    .where(
+      and(
+        eq(borrowRecords.userId, userId),
+        eq(borrowRecords.itemId, id),
+        eq(borrowRecords.status, "BORROWED"),
+      ),
+    )
+    .limit(1);
+
+  const isBorrowed = Boolean(borrowedRecord);
+
+  const borrowingEligibility = {
+    isAvailable: availableItems > 0 && user.status === "APPROVED" && !isBorrowed,
+    isBorrowed,
+  };
+
   return (
     <section className='item-overview'>
       <div className='flex flex-2 flex-col gap-3 md:gap-5'>
@@ -38,12 +68,9 @@ const ItemOverview = ({
           </p>
         </div>
 
-        <p className='item-description max-sm:[word-spacing:-2px]'>{summary}</p>
+        <p className='item-description'>{summary}</p>
 
-        <Button className='item-overview_btn'>
-          <Image src='/icons/claw.svg' alt='claw' width={24} height={24} />
-          <p className='font-medium text-lg'>Borrow Item Request</p>
-        </Button>
+        <BorrowItem itemId={id} userId={userId} borrowingEligibility={borrowingEligibility} />
       </div>
 
       <div className='item-image'>
