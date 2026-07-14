@@ -33,7 +33,7 @@ const Page = async ({ searchParams }: { searchParams: Promise<{ page?: string | 
     <>
       <ItemList title='Search Results' items={collectionItems} />
       <Pagination className='mt-10'>
-        <PaginationContent className='gap-1!'>
+        <PaginationContent className='gap-1.5!'>
           <PaginationItem className='pagination-item'>
             <PaginationPrevious
               href={`/collection?page=${Math.max(1, currentPage - 1)}`}
