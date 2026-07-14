@@ -38,8 +38,6 @@ const Layout = async ({ children }: { children: ReactNode }) => {
     .limit(1)
     .then(res => res[0]?.isAdmin === "ADMIN");
 
-  console.log(isAdmin);
-
   return (
     <div className='root-container'>
       <div className='content-container'>

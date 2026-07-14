@@ -20,7 +20,6 @@ const NavigationItem = ({
   href,
   pathName = "/",
   className,
-  ...props
 }: React.ComponentPropsWithoutRef<"li"> & { href: string; pathName: string }) => {
   return (
     <NavigationMenuLink asChild>
@@ -77,18 +76,16 @@ const DesktopMenu = ({
                   className='cursor-pointer capitalize text-lg!'
                 />
               </li>
-              <li>
-                {isAdmin && (
-                  <NavigationMenuItem>
-                    <NavigationItem
-                      href='/admin'
-                      title='Admin'
-                      pathName={pathName}
-                      className='cursor-pointer capitalize text-lg!'
-                    />
-                  </NavigationMenuItem>
-                )}
-              </li>
+              {isAdmin && (
+                <li>
+                  <NavigationItem
+                    href='/admin'
+                    title='Admin'
+                    pathName={pathName}
+                    className='cursor-pointer capitalize text-lg!'
+                  />
+                </li>
+              )}
               <li>
                 <form action={signOutCurrentUser}>
                   <Button className='border border-foreground font-medium! min-h-10! text-lg! w-full'>

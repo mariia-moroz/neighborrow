@@ -1,0 +1,1 @@
+ALTER TABLE "borrow_records" ALTER COLUMN "return_date" SET DATA TYPE timestamp with time zone;
