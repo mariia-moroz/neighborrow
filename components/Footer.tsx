@@ -12,7 +12,7 @@ const Footer = () => {
         className='max-sm:hidden'
       />
       <Image
-        src='/images/cutie.svg'
+        src='/images/cutie-small.svg'
         alt='footer'
         height={375}
         width={2400}
