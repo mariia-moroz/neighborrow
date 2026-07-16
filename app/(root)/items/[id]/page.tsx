@@ -20,37 +20,37 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
       <ItemOverview {...itemDetails} userId={session?.user?.id as string} />
       <div className='item-text'>
         <div className='flex-[1.5] mt-10'>
-          <section className='flex flex-col gap-7'>
-            <h3>Description</h3>
-            <div className='space-y-5 text-xl'>
+          <section className='item-info-full'>
+            <div>
+              <h3>Description</h3>
               {itemDetails.description.split("\n").map((line, i) => (
                 <p key={i}>{line}</p>
               ))}
             </div>
 
-            <h3>Condition</h3>
-            <div className='space-y-5 text-xl'>
+            <div>
+              <h3>Condition</h3>
               <p>{itemDetails.condition}</p>
             </div>
 
-            <h3>Included</h3>
-            <div className='space-y-5 text-xl'>
+            <div>
+              <h3>Included</h3>
               <ul className='list-disc mx-5'>
                 {itemDetails.included.split(",").map((line, i) => (
-                  <li key={i} className='text-lg md:text-xl'>
+                  <li key={i} className='text-lg md:text-xl font-normal'>
                     {line.trim()}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <h3>Brand and Model</h3>
-            <div className='space-y-5 text-xl'>
+            <div>
+              <h3>Brand and Model</h3>
               <p>{itemDetails.brand}</p>
             </div>
 
-            <h3>Borrow duration</h3>
-            <div className='space-y-5 text-xl'>
+            <div>
+              <h3>Borrow duration</h3>
               <p>Up to {itemDetails.borrowDuration} days</p>
             </div>
           </section>

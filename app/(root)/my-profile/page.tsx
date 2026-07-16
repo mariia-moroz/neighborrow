@@ -1,7 +1,8 @@
 import { auth } from "@/auth";
 import ItemListProfile from "@/components/ItemListProfile";
+import UserProfileCard from "@/components/UserProfileCard";
 import { db } from "@/database/drizzle";
-import { borrowRecords, items } from "@/database/schema";
+import { borrowRecords, items, users } from "@/database/schema";
 import { getCurrentTimestamp } from "@/lib/utils";
 import { desc, eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
@@ -13,6 +14,8 @@ const Page = async ({}) => {
   if (!session?.user?.id) {
     redirect("/sign-in");
   }
+
+  const [userDetails] = await db.select().from(users).where(eq(users.id, session?.user?.id)).limit(1);
 
   const allBorrowRecords = await db
     .select({
@@ -50,13 +53,14 @@ const Page = async ({}) => {
     .orderBy(desc(borrowRecords.createdAt));
 
   return (
-    <>
+    <div className='my-profile'>
+      <UserProfileCard {...userDetails} />
       <ItemListProfile
         title='Borrowed Items'
         items={[...allBorrowRecords]}
         currentTimestamp={currentTimestamp}
       />
-    </>
+    </div>
   );
 };
 

@@ -16,7 +16,7 @@ const ItemListProfile = ({ title, items, currentTimestamp, containerClassName }:
     <section className={containerClassName}>
       <h2 className='item-list-header'>{title}</h2>
 
-      <ul className='item-list'>
+      <ul className='item-list-profile'>
         {items.map(item => (
           <ItemCardProfile key={item.id} {...item} currentTimestamp={currentTimestamp} />
         ))}

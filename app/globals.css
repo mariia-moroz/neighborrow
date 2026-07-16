@@ -340,10 +340,48 @@
   }
 
   .item-description {
-    @apply mt-2 text-lg md:text-xl font-medium;
+    @apply mt-2 text-lg md:text-xl font-normal;
+  }
+
+  .item-info-full {
+    @apply flex flex-col gap-8 lg:gap-10;
+  }
+
+  .item-info-full div {
+    @apply flex flex-col gap-6;
   }
 
   .item-overview_btn {
-    @apply mt-4 flex gap-2! px-8! min-h-13 w-fit bg-special-accent! hover:bg-special-accent/90! text-foreground max-md:w-full! cursor-pointer border! border-foreground!;
+    @apply mt-4 flex gap-2! px-6! min-h-13 w-fit bg-special-accent! hover:bg-special-accent/90! text-foreground max-md:w-full! cursor-pointer border! border-foreground!;
+  }
+
+  /* User Profile */
+
+  .my-profile {
+    @apply flex flex-col md:flex-row gap-20;
+  }
+
+  .item-list-profile {
+    @apply mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 xs:gap-9!;
+  }
+
+  .user-card-wrapper {
+    @apply relative max-w-lg;
+  }
+
+  .user-card-pin {
+    @apply absolute left-1/2 top-0 z-10 h-auto w-10 xxs:w-12 -translate-x-1/2 -translate-y-1/5 lg:w-14;
+  }
+
+  .user-card {
+    @apply pt-20 lg:pt-24 flex flex-col gap-5 lg:gap-7 border border-border rounded-3xl bg-white w-full md:w-md lg:w-lg max-w-lg overflow-clip;
+  }
+
+  .user-info {
+    @apply flex items-center gap-2 md:gap-5 px-5 lg:px-8;
+  }
+
+  .user-details {
+    @apply flex flex-col gap-6 px-5 lg:px-8;
   }
 }
