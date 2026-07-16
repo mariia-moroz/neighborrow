@@ -23,7 +23,6 @@ const ItemCarousel = ({ title, items, containerClassName }: Props) => {
   return (
     <section className={containerClassName}>
       <h2 className='item-list-header'>{title}</h2>
-
       <Carousel
         plugins={[
           Autoplay({
