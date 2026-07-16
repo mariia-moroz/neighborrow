@@ -24,6 +24,7 @@ export const users = pgTable("users", {
   address: text("address").notNull(),
   password: text("password").notNull(),
   idConfirmation: text("id_confirmation").notNull(),
+  rating: doublePrecision("rating").notNull(),
   status: STATUS_ENUM("status").default("PENDING"),
   role: ROLE_ENUM("role").default("USER"),
   lastActivityDate: date("last_activity_date").defaultNow(),
@@ -62,7 +63,7 @@ export const items = pgTable("items", {
 export const borrowRecords = pgTable("borrow_records", {
   id: uuid("id").notNull().primaryKey().defaultRandom().unique(),
   userId: uuid("user_id")
-    .references(() => users.id)
+    .references(() => users.id, { onDelete: "cascade" })
     .notNull(),
   itemId: uuid("item_id")
     .references(() => items.id)

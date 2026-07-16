@@ -82,6 +82,7 @@ export const signUp = async (params: AuthCredentials) => {
         password: hashedPassword,
         address,
         idConfirmation,
+        rating: 5.0,
       })
       .returning({ id: users.id });
 
