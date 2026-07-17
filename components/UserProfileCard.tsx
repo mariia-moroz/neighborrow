@@ -25,15 +25,19 @@ const UserProfileCard = ({
           </>
         );
       case "REGECTED":
-        <>
-          <CircleXIcon className='stroke-[#C44DA2]' size={16} />
-          <p className='text-sm'>Verification failed</p>
-        </>;
+        return (
+          <>
+            <CircleXIcon className='stroke-[#C44DA2]' size={16} />
+            <p className='text-sm'>Verification failed</p>
+          </>
+        );
       default:
-        <>
-          <ClockIcon className='stroke-[#D5DEE9]' size={16} />
-          <p className='text-sm'>Avaiting aproval</p>
-        </>;
+        return (
+          <>
+            <ClockIcon className='stroke-[#D5DEE9]' size={16} />
+            <p className='text-sm'>Avaiting aproval</p>
+          </>
+        );
     }
   };
 
