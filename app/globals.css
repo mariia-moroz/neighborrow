@@ -340,10 +340,74 @@
   }
 
   .item-description {
-    @apply mt-2 text-lg md:text-xl font-medium;
+    @apply mt-2 text-lg md:text-xl font-normal;
+  }
+
+  .item-info-full {
+    @apply flex flex-col gap-8 lg:gap-10;
+  }
+
+  .item-info-full div {
+    @apply flex flex-col gap-6;
   }
 
   .item-overview_btn {
-    @apply mt-4 flex gap-2! px-8! min-h-13 w-fit bg-special-accent! hover:bg-special-accent/90! text-foreground max-md:w-full! cursor-pointer border! border-foreground!;
+    @apply mt-4 flex gap-2! px-6! min-h-13 w-fit bg-special-accent! hover:bg-special-accent/90! text-foreground max-md:w-full! cursor-pointer border! border-foreground!;
+  }
+
+  /* User Profile */
+
+  .my-profile {
+    @apply flex flex-col items-center justify-center xl:justify-start xl:items-start xl:flex-row gap-16 desktop:gap-20;
+  }
+
+  .item-list-profile {
+    @apply mt-10 grid grid-cols-1  sm:grid-cols-2 desktop:grid-cols-3 gap-5 xs:gap-9!;
+  }
+
+  .user-tabs {
+    @apply flex flex-col items-center xl:items-start;
+  }
+
+  .user-tabs-list {
+    @apply border border-border! bg-white! min-h-10!;
+  }
+
+  .user-tabs-trigger {
+    @apply text-base! font-medium! py-2! px-3!;
+  }
+
+  .user-tabs-trigger[data-state="active"] {
+    @apply bg-primary! text-foreground! border border-foreground! shadow-none!;
+  }
+
+  .user-card-wrapper {
+    @apply relative w-full min-w-0 max-w-lg shrink-0;
+  }
+
+  .user-card-pin {
+    @apply absolute left-1/2 top-0 z-10 h-auto w-10 xxs:w-12 -translate-x-1/2 -translate-y-1/5 lg:w-14;
+  }
+
+  .user-card {
+    @apply pt-20 lg:pt-24 flex flex-col gap-5 lg:gap-7 border border-border rounded-3xl bg-white w-full md:w-md lg:w-lg max-w-lg overflow-clip;
+  }
+
+  .user-info {
+    @apply flex w-full min-w-0 items-center gap-2 overflow-hidden px-5 md:gap-5 lg:px-8;
+  }
+
+  .user-email {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .user-details {
+    @apply flex flex-col gap-6 px-5 lg:px-8;
   }
 }

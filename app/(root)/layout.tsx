@@ -42,7 +42,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
     <div className='root-container'>
       <div className='content-container'>
         <Header isAdmin={isAdmin} session={session} />
-        <main className='mt-6 xl:mt-20 pb-30 lg:pb-40'>{children}</main>
+        <main className='mt-6 xl:mt-16 pb-30 lg:pb-40'>{children}</main>
       </div>
       <Footer />
     </div>

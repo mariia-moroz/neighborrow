@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarIcon, CircleAlertIcon, CircleCheckIcon, CalendarClockIcon } from "lucide-react";
+import { CalendarIcon, CircleAlertIcon, CircleCheckIcon, CalendarClockIcon, ClockIcon } from "lucide-react";
 
 const ItemCardProfile = ({
   item: { id, title, category, image },
@@ -11,6 +11,15 @@ const ItemCardProfile = ({
   currentTimestamp,
 }: BorrowedItem & { currentTimestamp: number }) => {
   const getStatus = () => {
+    if (status === "PENDING") {
+      return (
+        <>
+          <ClockIcon size={18} className='stroke-[#D5DEE9]' />
+          <p>Pending approval</p>
+        </>
+      );
+    }
+
     if (status === "RETURNED" && returnDate) {
       return (
         <>
@@ -68,7 +77,10 @@ const ItemCardProfile = ({
         <div className='item-card-details'>
           <div className='flex gap-1 items-center'>
             <CalendarIcon size={18} className='stroke-secondary' />
-            <p>Borrowed {borrowDate && `on ${new Date(borrowDate).toLocaleDateString("en-GB")}`}</p>
+            <p>
+              {status === "PENDING" ? "Requested" : "Borrowed"}{" "}
+              {borrowDate && `on ${new Date(borrowDate).toLocaleDateString("en-GB")}`}
+            </p>
           </div>
           <div className='flex gap-1 items-center'>{getStatus()}</div>
         </div>

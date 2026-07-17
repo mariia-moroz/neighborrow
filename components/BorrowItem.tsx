@@ -33,7 +33,7 @@ const BorrowItem = ({ itemId, userId, borrowingEligibility: { isAvailable, isBor
           description: "Item borrowed successfully",
         });
 
-        router.push("/my-profile");
+        router.push("/my-profile?status=pending");
       } else {
         toast.error("Booking Error", {
           description: "An errror occcured while borrowing the item",

@@ -21,6 +21,7 @@ interface AuthCredentials {
   email: string;
   password: string;
   address: string;
+  rating: number;
   idConfirmation: string;
 }
 
