@@ -13,7 +13,7 @@ import {
 
 export const STATUS_ENUM = pgEnum("status", ["PENDING", "APPROVED", "REGECTED"]);
 export const ROLE_ENUM = pgEnum("role", ["USER", "ADMIN"]);
-export const BORROW_STATUS_ENUM = pgEnum("borrrow_status", ["BORROWED", "RETURNED"]);
+export const BORROW_STATUS_ENUM = pgEnum("borrrow_status", ["PENDING", "BORROWED", "RETURNED"]);
 
 export const users = pgTable("users", {
   id: uuid("id").notNull().primaryKey().defaultRandom().unique(),
@@ -71,6 +71,6 @@ export const borrowRecords = pgTable("borrow_records", {
   borrowDate: timestamp("borrow_date", { withTimezone: true }).defaultNow().notNull(),
   dueDate: timestamp("due_date", { withTimezone: true }).notNull(),
   returnDate: timestamp("return_date", { withTimezone: true }) || null,
-  status: BORROW_STATUS_ENUM("status").default("BORROWED").notNull(),
+  status: BORROW_STATUS_ENUM("status").default("PENDING").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 });

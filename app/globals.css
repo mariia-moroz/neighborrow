@@ -365,6 +365,22 @@
     @apply mt-10 grid grid-cols-1  sm:grid-cols-2 desktop:grid-cols-3 gap-5 xs:gap-9!;
   }
 
+  .user-tabs {
+    @apply flex flex-col items-center xl:items-start;
+  }
+
+  .user-tabs-list {
+    @apply border border-border! bg-white! min-h-10!;
+  }
+
+  .user-tabs-trigger {
+    @apply text-base! font-medium! py-2! px-3!;
+  }
+
+  .user-tabs-trigger[data-state="active"] {
+    @apply bg-primary! text-foreground! border border-foreground!;
+  }
+
   .user-card-wrapper {
     @apply relative w-full min-w-0 max-w-lg shrink-0;
   }

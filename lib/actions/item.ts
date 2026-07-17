@@ -24,7 +24,7 @@ export const borrowItem = async (params: BorrowItemParams) => {
 
     const dueDate = dayjs().add(item[0].borrowDuration, "day").toDate();
 
-    const record = await db.insert(borrowRecords).values({ userId, itemId, dueDate, status: "BORROWED" });
+    const record = await db.insert(borrowRecords).values({ userId, itemId, dueDate });
 
     const availableItems = item[0].availableItems - 1;
     const updateRecordValues = { availableItems: availableItems, available: availableItems > 0 };

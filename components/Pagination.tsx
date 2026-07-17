@@ -17,12 +17,14 @@ const ItemPagination = ({
   currentPage: number;
   route: string;
 }) => {
+  const getPageHref = (page: number) => `${route}${route.includes("?") ? "&" : "?"}page=${page}`;
+
   return (
     <Pagination className='mt-10'>
       <PaginationContent className='gap-1.5!'>
         <PaginationItem className='pagination-item'>
           <PaginationPrevious
-            href={`${route}?page=${Math.max(1, currentPage - 1)}`}
+            href={getPageHref(Math.max(1, currentPage - 1))}
             aria-disabled={currentPage === 1}
             tabIndex={currentPage === 1 ? -1 : undefined}
             className={currentPage === 1 ? "pointer-events-none opacity-50" : undefined}
@@ -36,7 +38,7 @@ const ItemPagination = ({
               key={pageNumber}
               className={pageNumber === currentPage ? "pagination-item--active" : "pagination-item"}
             >
-              <PaginationLink href={`${route}?page=${pageNumber}`} isActive={pageNumber === currentPage}>
+              <PaginationLink href={getPageHref(pageNumber)} isActive={pageNumber === currentPage}>
                 {pageNumber}
               </PaginationLink>
             </PaginationItem>
@@ -44,7 +46,7 @@ const ItemPagination = ({
         })}
         <PaginationItem className='pagination-item'>
           <PaginationNext
-            href={`${route}?page=${Math.min(totalPages, currentPage + 1)}`}
+            href={getPageHref(Math.min(totalPages, currentPage + 1))}
             aria-disabled={currentPage === totalPages}
             tabIndex={currentPage === totalPages ? -1 : undefined}
             className={currentPage === totalPages ? "pointer-events-none opacity-50" : undefined}

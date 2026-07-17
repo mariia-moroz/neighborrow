@@ -3,7 +3,7 @@ import { Rating } from "@/components/reui/rating";
 import BorrowItem from "./BorrowItem";
 import { db } from "@/database/drizzle";
 import { borrowRecords, users } from "@/database/schema";
-import { and, eq } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 
 interface ItemOverviewProps extends Item {
   userId: string;
@@ -33,7 +33,7 @@ const ItemOverview = async ({
       and(
         eq(borrowRecords.userId, userId),
         eq(borrowRecords.itemId, id),
-        eq(borrowRecords.status, "BORROWED"),
+        inArray(borrowRecords.status, ["PENDING", "BORROWED"]),
       ),
     )
     .limit(1);
