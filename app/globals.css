@@ -358,15 +358,15 @@
   /* User Profile */
 
   .my-profile {
-    @apply flex flex-col md:flex-row gap-20;
+    @apply flex flex-col items-center justify-center xl:justify-start xl:items-start xl:flex-row gap-16 desktop:gap-20;
   }
 
   .item-list-profile {
-    @apply mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 xs:gap-9!;
+    @apply mt-10 grid grid-cols-1  sm:grid-cols-2 desktop:grid-cols-3 gap-5 xs:gap-9!;
   }
 
   .user-card-wrapper {
-    @apply relative max-w-lg;
+    @apply relative w-full min-w-0 max-w-lg shrink-0;
   }
 
   .user-card-pin {
@@ -378,7 +378,17 @@
   }
 
   .user-info {
-    @apply flex items-center gap-2 md:gap-5 px-5 lg:px-8;
+    @apply flex w-full min-w-0 items-center gap-2 overflow-hidden px-5 md:gap-5 lg:px-8;
+  }
+
+  .user-email {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .user-details {

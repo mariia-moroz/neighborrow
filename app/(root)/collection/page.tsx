@@ -25,7 +25,7 @@ const Page = async ({ searchParams }: { searchParams: Promise<{ page?: string | 
   return (
     <>
       <ItemList title='Search Results' items={collectionItems} />
-      <ItemPagination currentPage={currentPage} totalPages={totalPages} route='collection' />
+      <ItemPagination currentPage={currentPage} totalPages={totalPages} route='/collection' />
     </>
   );
 };

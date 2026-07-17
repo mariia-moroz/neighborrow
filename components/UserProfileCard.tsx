@@ -39,7 +39,14 @@ const UserProfileCard = ({
 
   return (
     <div className='user-card-wrapper'>
-      <Image src='/images/pin.svg' alt='pin' width={40} height={60} className='user-card-pin' />
+      <Image
+        src='/images/pin.svg'
+        alt='pin'
+        width={60}
+        height={88}
+        className='user-card-pin'
+        style={{ height: "auto" }}
+      />
 
       <div className='user-card'>
         <div className='user-info'>
@@ -49,12 +56,14 @@ const UserProfileCard = ({
             loading='eager'
             width={100}
             height={100}
-            className='w-12 h-12 lg:w-25 lg:h-25'
+            className='w-12 h-12 shrink-0 lg:w-22 lg:h-22'
           />
-          <div>
+          <div className='min-w-0 flex-1 overflow-hidden'>
             <div className='flex gap-1 items-center'>{getStatus()}</div>
             <h2 className='text-lg md:text-2xl font-bold'>{fullName}</h2>
-            <p className='font-bold text-base lg:text-md text-secondary'>{email}</p>
+            <p className='user-email font-bold text-base text-secondary lg:text-md' title={email}>
+              {email}
+            </p>
           </div>
         </div>
 
@@ -71,7 +80,10 @@ const UserProfileCard = ({
 
           <div>
             <h3 className='font-medium'>Verification</h3>
-            <Link href={idConfirmation} className='flex gap-1 font-bold text-md text-secondary items-center'>
+            <Link
+              href={idConfirmation}
+              className='flex gap-1 font-bold text-base md:text-md text-secondary items-center'
+            >
               <EyeIcon size={24} className='stroke-secondary' />
               View ID
             </Link>
