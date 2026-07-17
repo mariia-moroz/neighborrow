@@ -378,7 +378,7 @@
   }
 
   .user-tabs-trigger[data-state="active"] {
-    @apply bg-primary! text-foreground! border border-foreground!;
+    @apply bg-primary! text-foreground! border border-foreground! shadow-none!;
   }
 
   .user-card-wrapper {
