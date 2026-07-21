@@ -1,8 +1,8 @@
 "use server";
 
 import { db } from "@/database/drizzle";
-import { borrowRecords, items } from "@/database/schema";
-import { eq } from "drizzle-orm";
+import { borrowRecords, items, users } from "@/database/schema";
+import { eq, sql } from "drizzle-orm";
 import dayjs from "dayjs";
 
 export const borrowItem = async (params: BorrowItemParams) => {
@@ -25,6 +25,11 @@ export const borrowItem = async (params: BorrowItemParams) => {
     const dueDate = dayjs().add(item[0].borrowDuration, "day").toDate();
 
     const record = await db.insert(borrowRecords).values({ userId, itemId, dueDate });
+
+    await db
+      .update(users)
+      .set({ itemsBorrowed: sql`${users.itemsBorrowed} + 1` })
+      .where(eq(users.id, userId));
 
     const availableItems = item[0].availableItems - 1;
     const updateRecordValues = { availableItems: availableItems, available: availableItems > 0 };

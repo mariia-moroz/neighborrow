@@ -105,6 +105,7 @@ const Page = async ({
                   currentPage={currentPage}
                   totalPages={totalPages}
                   route={`/my-profile?status=${selectedTab}`}
+                  className='mt-10'
                 />
               </>
             )}

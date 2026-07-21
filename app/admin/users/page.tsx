@@ -1,9 +1,9 @@
-import ItemsTable from "@/components/admin/ItemsTable";
+import UsersTable from "@/components/admin/UsersTable";
 import NoItems from "@/components/NoItems";
-import ItemPagination from "@/components/Pagination";
+import ItemsPagination from "@/components/Pagination";
 import { Button } from "@/components/ui/button";
 import { db } from "@/database/drizzle";
-import { items } from "@/database/schema";
+import { SelectUser, users } from "@/database/schema";
 import { count, desc } from "drizzle-orm";
 import Link from "next/link";
 
@@ -14,39 +14,33 @@ const Page = async ({ searchParams }: { searchParams: Promise<{ page?: string | 
   const pageValue = Array.isArray(page) ? page[0] : page;
   const requestedPage = Math.max(1, Number.parseInt(pageValue ?? "1", 10) || 1);
 
-  const [{ totalItems }] = await db.select({ totalItems: count() }).from(items);
-  const totalPages = Math.max(1, Math.ceil(totalItems / ITEMS_PER_PAGE));
+  const [{ totalUsers }] = await db.select({ totalUsers: count() }).from(users);
+  const totalPages = Math.max(1, Math.ceil(totalUsers / ITEMS_PER_PAGE));
   const currentPage = Math.min(requestedPage, totalPages);
 
-  const allItems = (await db
+  const allUsers = (await db
     .select()
-    .from(items)
-    .orderBy(desc(items.createdAt))
+    .from(users)
+    .orderBy(desc(users.createdAt))
     .limit(ITEMS_PER_PAGE)
-    .offset((currentPage - 1) * ITEMS_PER_PAGE)) as Item[];
+    .offset((currentPage - 1) * ITEMS_PER_PAGE)) as SelectUser[];
 
   return (
     <section className='admin-table-container'>
       <div className='admin-table-top'>
-        <h2>All Items</h2>
-        <Button
-          className='px-3 py-0.5 border border-foreground rounded-md font-medium text-base bg-primary text-nowrap'
-          asChild
-        >
-          <Link href='/admin/items/new'>+ Create New Item</Link>
-        </Button>
+        <h2>All Users</h2>
       </div>
 
       <div className='mt-7 w-full overflow-hidden'>
-        {allItems?.length <= 0 ? (
-          <NoItems title='No Items Found' text={`We couldn't find any items.\nPlease come back later.`} />
+        {allUsers?.length <= 0 ? (
+          <NoItems title='No Users Found' text={`We couldn't find any users.\nPlease come back later.`} />
         ) : (
           <>
-            <ItemsTable items={allItems} />
-            <ItemPagination
+            <UsersTable users={allUsers} />
+            <ItemsPagination
               currentPage={currentPage}
               totalPages={totalPages}
-              route='/admin/items'
+              route='/admin/users'
               className='mt-5'
             />
           </>

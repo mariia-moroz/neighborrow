@@ -67,12 +67,12 @@ const Sidebar = ({ session }: { session: Session }) => {
           src='/icons/profile-icon.svg'
           alt='profile'
           loading='eager'
-          width={46}
-          height={46}
+          width={40}
+          height={40}
           className='shrink-0 max-lg:hidden'
         />
         <div className='flex min-w-0 flex-1 flex-col overflow-hidden max-lg:hidden'>
-          <p className='truncate font-medium '>{session?.user?.name}</p>
+          <p className='truncate font-semibold text-base'>{session?.user?.name}</p>
           <p className='truncate text-muted-special-text text-xs'>{session?.user?.email}</p>
         </div>
         <form action={signOutCurrentUser} className='flex shrink-0'>

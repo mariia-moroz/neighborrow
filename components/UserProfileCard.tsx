@@ -2,19 +2,9 @@ import { BadgeCheckIcon, CircleXIcon, ClockIcon, EyeIcon } from "lucide-react";
 import Image from "next/image";
 import { Rating } from "./reui/rating";
 import Link from "next/link";
+import type { SelectUser } from "@/database/schema";
 
-interface UserProfileCardProps extends AuthCredentials {
-  status: "PENDING" | "APPROVED" | "REGECTED" | null;
-}
-
-const UserProfileCard = ({
-  fullName,
-  email,
-  address,
-  idConfirmation,
-  rating,
-  status,
-}: UserProfileCardProps) => {
+const UserProfileCard = ({ fullName, email, address, idConfirmation, rating, status }: SelectUser) => {
   const getStatus = () => {
     switch (status) {
       case "APPROVED":
@@ -27,14 +17,14 @@ const UserProfileCard = ({
       case "REGECTED":
         return (
           <>
-            <CircleXIcon className='stroke-[#C44DA2]' size={16} />
+            <CircleXIcon className='stroke-destructive' size={16} />
             <p className='text-sm'>Verification failed</p>
           </>
         );
       default:
         return (
           <>
-            <ClockIcon className='stroke-[#D5DEE9]' size={16} />
+            <ClockIcon className='stroke-pending-icon' size={16} />
             <p className='text-sm'>Avaiting aproval</p>
           </>
         );

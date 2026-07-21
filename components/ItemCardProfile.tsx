@@ -14,7 +14,7 @@ const ItemCardProfile = ({
     if (status === "PENDING") {
       return (
         <>
-          <ClockIcon size={18} className='stroke-[#D5DEE9]' />
+          <ClockIcon size={18} className='stroke-pending-icon' />
           <p>Pending approval</p>
         </>
       );
@@ -23,7 +23,7 @@ const ItemCardProfile = ({
     if (status === "RETURNED" && returnDate) {
       return (
         <>
-          <CircleCheckIcon size={18} className='stroke-[#9DDE8B]' />
+          <CircleCheckIcon size={18} className='stroke-success-icon' />
           <p>Returned {returnDate && `on ${new Date(returnDate).toLocaleDateString("en-GB")}`}</p>
         </>
       );
@@ -43,8 +43,8 @@ const ItemCardProfile = ({
     if (dueDateTime < currentTimestamp) {
       return (
         <>
-          <CircleAlertIcon size={18} className='stroke-[#C44DA2]' />
-          <p className='text-[#C44DA2]'>Overdue return</p>
+          <CircleAlertIcon size={18} className='stroke-destructive' />
+          <p className='text-destructive'>Overdue return</p>
         </>
       );
     }
@@ -53,7 +53,7 @@ const ItemCardProfile = ({
 
     return (
       <div className='flex gap-1 items-center'>
-        <CalendarClockIcon size={18} className='stroke-[#D5DEE9]' />
+        <CalendarClockIcon size={18} className='stroke-pending-icon' />
         <p>{differenceInDays} days left to due</p>
       </div>
     );

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Pagination,
   PaginationContent,
@@ -12,15 +11,17 @@ const ItemPagination = ({
   totalPages,
   currentPage,
   route,
+  className,
 }: {
   totalPages: number;
   currentPage: number;
   route: string;
+  className?: string;
 }) => {
   const getPageHref = (page: number) => `${route}${route.includes("?") ? "&" : "?"}page=${page}`;
 
   return (
-    <Pagination className='mt-10'>
+    <Pagination className={className}>
       <PaginationContent className='gap-1.5!'>
         <PaginationItem className='pagination-item'>
           <PaginationPrevious

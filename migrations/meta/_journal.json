@@ -71,6 +71,13 @@
       "when": 1784248064035,
       "tag": "0009_early_zemo",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1784472199250,
+      "tag": "0010_hard_gauntlet",
+      "breakpoints": true
     }
   ]
 }

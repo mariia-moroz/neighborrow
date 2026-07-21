@@ -27,6 +27,7 @@ export const users = pgTable("users", {
   rating: doublePrecision("rating").notNull(),
   status: STATUS_ENUM("status").default("PENDING"),
   role: ROLE_ENUM("role").default("USER"),
+  itemsBorrowed: integer("items_borrowed").notNull().default(0),
   lastActivityDate: date("last_activity_date").defaultNow(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 });

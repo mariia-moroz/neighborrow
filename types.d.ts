@@ -21,7 +21,6 @@ interface AuthCredentials {
   email: string;
   password: string;
   address: string;
-  rating: number;
   idConfirmation: string;
 }
 
@@ -69,5 +68,24 @@ interface BorrowedItem {
     brand: string;
     borrowDuration: number;
     createdAt: Date | null;
+  };
+}
+
+interface BorrowRequest {
+  id: string;
+  userId: string;
+  itemId: string;
+  borrowDate: Date | null;
+  dueDate: Date | null;
+  returnDate: Date | null;
+  status: string;
+  createdAt: Date | null;
+  item: {
+    image: string;
+    title: string;
+  };
+  user: {
+    fullName: string;
+    email: string;
   };
 }

@@ -1,0 +1,1 @@
+ALTER TABLE "users" ADD COLUMN "items_borrowed" integer DEFAULT 0 NOT NULL;
